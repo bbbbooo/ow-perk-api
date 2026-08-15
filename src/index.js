@@ -1,12 +1,12 @@
 import { startBot } from "./bot.js";
-import { registerCommands } from "./register-commands.js";
+import { clearCommands } from "./clear-commands.js";
 import { startServer } from "./server.js";
 
 startServer();
 
 if (process.env.DISCORD_TOKEN) {
   try {
-    if (process.env.CLIENT_ID) await registerCommands();
+    await clearCommands();
     await startBot(process.env.DISCORD_TOKEN);
   } catch (error) {
     console.error("[discord] 시작 실패:", error);

@@ -1,0 +1,20 @@
+{
+  "name": "ow-perk-api",
+  "version": "1.0.0",
+  "description": "Overlooker 통계를 기반으로 오버워치 특전 선택률을 제공하는 Discord 봇/API 서버",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "register": "node src/register-commands.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.21.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1"
+  }
+}

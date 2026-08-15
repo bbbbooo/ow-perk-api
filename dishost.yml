@@ -1,0 +1,13 @@
+name: ow-perk-api
+language: javascript
+startup: npm start
+memory: 128
+env:
+  DISCORD_TOKEN: ""
+  CLIENT_ID: ""
+  GUILD_ID: ""
+  PORT: "3000"
+  CACHE_TTL_MS: "300000"
+git:
+  autoDeploy: true
+  branch: main

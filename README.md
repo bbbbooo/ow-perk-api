@@ -17,7 +17,7 @@ Overlooker의 실제 경기 표본을 바탕으로 영웅별 특전 선택률을
 
 ## 로컬 실행
 
-Node.js 20 이상이 필요합니다.
+Node.js 22.9 이상이 필요합니다. DisHost의 Node.js 22 런타임에서 바로 실행할 수 있습니다.
 
 ```bash
 npm install
@@ -26,7 +26,7 @@ cp .env.example .env
 npm start
 ```
 
-Node.js는 `.env`를 자동으로 읽지 않으므로 로컬에서는 셸에서 환경변수를 내보내거나 `node --env-file=.env src/index.js`로 실행하세요. `DISCORD_TOKEN` 없이 실행하면 HTTP API만 시작합니다.
+`npm start`가 루트의 `.env`를 자동으로 읽습니다. `.env`가 없어도 DisHost가 프로세스 환경변수를 직접 주입한 경우 그대로 실행됩니다. `DISCORD_TOKEN` 없이 실행하면 HTTP API만 시작합니다.
 
 ### Discord 환경변수
 
@@ -62,7 +62,9 @@ GET /api/perks/ana?mode=competitive
 
 Discord Developer Portal에서 **Message Content Intent**도 반드시 활성화하세요.
 
-`main` 브랜치 Push 자동 배포가 설정되어 있습니다. 토큰이나 `.env` 파일은 저장소에 커밋하지 마세요.
+시작 명령은 `npm start`, 대체 시작 파일은 `src/index.js`입니다. 저장소 파일이 `/home/container` 바로 아래에 배포되어 `package.json`과 `src/`가 최상위에 보여야 합니다.
+
+`main` 브랜치 Push 자동 배포가 설정되어 있습니다. `.env`는 Git에서 제외되므로 자동 배포 후에도 서버에 남지만, 토큰이나 `.env` 파일을 저장소에 직접 커밋해서는 안 됩니다.
 
 ## 데이터 및 출처
 

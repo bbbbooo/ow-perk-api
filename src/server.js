@@ -2,6 +2,7 @@ import express from "express";
 import { rateLimit } from "express-rate-limit";
 import { MODE_CONFIG, REGION_NOTICE, SOURCE_URL } from "./constants.js";
 import { resolveHero } from "./heroes.js";
+import { localizationSource, localizePerkData } from "./localization.js";
 import { getHeroPerks, getHeroes } from "./overlooker.js";
 
 function parseMode(value) {
@@ -38,8 +39,14 @@ export function createApp() {
       const heroes = await getHeroes(mode);
       const hero = resolveHero(request.params.hero, heroes);
       if (!hero) return response.status(404).json({ error: "영웅을 찾지 못했습니다." });
-      const data = await getHeroPerks(hero.hero, mode);
-      return response.json({ mode, ...data, source: SOURCE_URL, notice: REGION_NOTICE });
+      const data = localizePerkData(await getHeroPerks(hero.hero, mode));
+      return response.json({
+        mode,
+        ...data,
+        source: SOURCE_URL,
+        localization_source: localizationSource(),
+        notice: REGION_NOTICE,
+      });
     } catch (error) { return next(error); }
   });
 

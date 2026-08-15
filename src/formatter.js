@@ -1,15 +1,16 @@
 import { EmbedBuilder } from "discord.js";
 import { MODE_CONFIG, OW_DATA_BASE_URL, REGION_NOTICE, SOURCE_URL } from "./constants.js";
 import { koreanName } from "./heroes.js";
+import { koreanPerkName } from "./localization.js";
 
 export function percent(rate) {
   return `${(Number(rate) * 100).toFixed(1)}%`;
 }
 
-export function tierLines(perks, tier) {
+export function tierLines(perks, tier, heroSlug = "") {
   const tierPerks = perks.filter((perk) => perk.tier === tier).sort((a, b) => b.pick_rate - a.pick_rate);
   if (!tierPerks.length) return "집계된 선택 기록이 없습니다.";
-  return tierPerks.map((perk, index) => `${index === 0 ? "🏆" : "▫️"} **${perk.name}** — ${percent(perk.pick_rate)} (${perk.picks.toLocaleString("ko-KR")}회)`).join("\n");
+  return tierPerks.map((perk, index) => `${index === 0 ? "🏆" : "▫️"} **${koreanPerkName(heroSlug, perk)}** — ${percent(perk.pick_rate)} (${perk.picks.toLocaleString("ko-KR")}회)`).join("\n");
 }
 
 export function buildPerkEmbed(data, mode, metadata = null) {
@@ -20,11 +21,11 @@ export function buildPerkEmbed(data, mode, metadata = null) {
     .setTitle(`${displayName} (${data.hero_name}) 특전 선택률`)
     .setDescription(`**${MODE_CONFIG[mode].label}** · 표본 ${data.sample_size.toLocaleString("ko-KR")}게임${sampleWarning}`)
     .addFields(
-      { name: "소형 특전", value: tierLines(data.perks, "minor") },
-      { name: "주요 특전", value: tierLines(data.perks, "major") },
+      { name: "소형 특전", value: tierLines(data.perks, "minor", data.hero) },
+      { name: "주요 특전", value: tierLines(data.perks, "major", data.hero) },
       { name: "안내", value: REGION_NOTICE },
     )
-    .setFooter({ text: "출처: Overlooker · 선택률은 승률이나 정답을 뜻하지 않습니다." })
+    .setFooter({ text: "통계: Overlooker · 특전명: Blizzard Entertainment · 선택률은 승률이나 정답을 뜻하지 않습니다." })
     .setURL(`${SOURCE_URL}/perks`)
     .setTimestamp();
 

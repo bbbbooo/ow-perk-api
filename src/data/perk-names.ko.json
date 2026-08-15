@@ -1,0 +1,324 @@
+{
+  "source": "https://overwatch.blizzard.com/ko-kr/heroes/",
+  "synced_at": "2026-08-15T18:34:17.763Z",
+  "heroes": {
+    "ana": {
+      "groggy": "혼미",
+      "speed_serum": "가속 혈청",
+      "biotic_bounce": "생체 수류탄 튕기기",
+      "headhunter": "인간사냥꾼"
+    },
+    "anran": {
+      "smoulder": "불씨",
+      "heat_shield": "열 보호막",
+      "short_fuse": "급한 성미",
+      "hungering_blaze": "굶주린 불꽃"
+    },
+    "ashe": {
+      "remote_detonator": "원격 기폭",
+      "double_barreled": "이중 총열",
+      "viper_s_sting": "독사의 침",
+      "airburst": "공중 폭발"
+    },
+    "baptiste": {
+      "expanded_field": "확대장",
+      "assault_burst": "맹공의 파동",
+      "automated_healing": "자동화 치유",
+      "rocket_boots": "로켓 전투화"
+    },
+    "bastion": {
+      "smart_bomb": "스마트 폭탄",
+      "configuration_reload": "설정: 재장전",
+      "lindholm_explosives": "린드홀름 폭발물",
+      "self_repair": "자가 수리"
+    },
+    "brigitte": {
+      "combat_medic": "전투 의무관",
+      "morale_boost": "사기 증진",
+      "inspiring_strike": "격려 타격",
+      "whiplash": "채찍질"
+    },
+    "cassidy": {
+      "bang_bang": "번쩍번쩍",
+      "rollin_round_up": "굴러 모으기",
+      "silver_bullet": "은탄환",
+      "giddy_up": "이랴!"
+    },
+    "dmon": {
+      "beast_within": "내면의 야수",
+      "meka_mobility": "MEKA 기동성",
+      "overstrike": "추가 강타",
+      "focused_fusion": "집중 융합"
+    },
+    "dva": {
+      "bunny_power": "토끼 파워",
+      "extended_boosters": "확장 부스터",
+      "shield_system": "보호막 시스템",
+      "precision_fusion": "집중 융합"
+    },
+    "domina": {
+      "efficient_design": "효율적인 설계",
+      "extended_power": "출력 확장",
+      "disruptive_detonation": "분열 폭발",
+      "corporate_retreat": "사업장 이전"
+    },
+    "doomfist": {
+      "one_two": "원투",
+      "survival_of_the_fittest": "적자생존",
+      "aftershock": "여진",
+      "power_matrix": "파워 매트릭스"
+    },
+    "echo": {
+      "partial_scan": "부분 스캔",
+      "full_salvo": "전탄 발사",
+      "focused_rush_major": "집중 돌진",
+      "aerial_munitions": "공중 탄약"
+    },
+    "emre": {
+      "suppressive_security": "제압 보장",
+      "enhanced_agility": "향상된 민첩성",
+      "heat_sink": "히트 싱크",
+      "cyber_adhesion": "사이버 부착"
+    },
+    "freja": {
+      "relentless_barrage": "가혹한 포화",
+      "momentum_boost": "가속 증폭",
+      "aerial_recovery": "공중 회복",
+      "rising_winds": "솟구치는 바람"
+    },
+    "genji": {
+      "swift_cuts": "신속 베기",
+      "dragon_s_thirst": "용의 갈증",
+      "blade_twisting": "회전하는 칼날",
+      "meditation": "명상"
+    },
+    "hanzo": {
+      "sonic_disruption": "음파 분열",
+      "dragon_fury": "용의 분노",
+      "frost_arrow": "냉기 화살",
+      "scatter_arrows": "갈래 화살"
+    },
+    "hazard": {
+      "deep_leap": "깊숙이 덤벼들기",
+      "anarchic_zeal": "무정부 광신자",
+      "reconstitution": "재편성",
+      "explosive_impalements": "폭발성 꿰뚫기"
+    },
+    "illari": {
+      "rapid_construction": "빠른 조립",
+      "summer_solstice": "하지",
+      "solar_flare": "태양의 섬광",
+      "sunburn": "일광 화상"
+    },
+    "jetpack_cat": {
+      "ulterior_motive": "숨은 동기",
+      "transport_shielding": "운송 보호막",
+      "claws_out": "발톱 꺼내기",
+      "purrfect_form": "냥벽한 골골대기"
+    },
+    "junker_queen": {
+      "rampant_charge": "광분 돌진",
+      "battle_shout": "전투의 외침",
+      "willy_willy": "선풍",
+      "savage_satiation": "맹렬한 포식"
+    },
+    "junkrat": {
+      "nitro_boost": "니트로 부스트",
+      "bomb_voyage": "빵 터지는 여행",
+      "mine_recycling": "지뢰 재활용",
+      "frag_cannon": "폭탄 발사포"
+    },
+    "juno": {
+      "familiar_vitals": "익숙한 포착",
+      "locked_on": "대상 포착",
+      "lift_off": "이륙",
+      "faster_blaster": "고속 블라스터"
+    },
+    "kiriko": {
+      "urgent_care": "긴급 치료",
+      "fortune_teller": "점술가",
+      "ready_step": "준비 단계",
+      "foxtrot": "여우걸음"
+    },
+    "lifeweaver": {
+      "petal_protection": "꽃잎 보호",
+      "dashing_escape": "질주 탈출",
+      "sow_the_seed": "씨앗 뿌리기",
+      "superbloom": "초월 개화"
+    },
+    "lucio": {
+      "soundwave_rider": "소리 파동 타기",
+      "beat_drop": "비트 드롭",
+      "noise_violation": "소음 공해",
+      "accelerando": "아첼레란도"
+    },
+    "mauga": {
+      "kinetic_bandolier": "키네틱 탄띠",
+      "pyromaniac": "방화광",
+      "firewalker": "불 위를 걷는 자",
+      "combat_fuel": "전투 연료"
+    },
+    "mei": {
+      "skating_rink": "스케이트장",
+      "glacial_propulsion": "빙하 추진력",
+      "deep_freeze": "냉대",
+      "cryo_storm": "급속 폭풍"
+    },
+    "mercy": {
+      "angelic_resurrection": "천사의 부활",
+      "winged_reach": "날개의 영역",
+      "chain_boost": "연쇄 증폭",
+      "double_dose": "두 배 투여"
+    },
+    "mizuki": {
+      "wellspring": "샘물",
+      "exposed_soul": "드러난 영혼",
+      "resonant_return": "공명 복귀",
+      "quickstep": "잰걸음"
+    },
+    "moira": {
+      "destruction_s_divide": "파괴의 분할",
+      "ethical_nourishment": "윤리적 양분 보충",
+      "reversal": "반전",
+      "phantom_step": "환영 걸음"
+    },
+    "orisa": {
+      "defense_protocol": "방어 프로토콜",
+      "mobile_fortification": "이동식 강화",
+      "protective_barrier": "보호 방벽",
+      "heavy_javelin": "묵직한 투창"
+    },
+    "pharah": {
+      "concussive_force": "충격력",
+      "helix_shields": "나선 보호막",
+      "fuel_stores": "연료 저장",
+      "rocket_salvo": "로켓 투하"
+    },
+    "ramattra": {
+      "relentless_form": "맹공 형태",
+      "prolonged_barrier": "연장된 방벽",
+      "void_surge": "공허 쇄도",
+      "nanite_repair": "나노머신 수리"
+    },
+    "reaper": {
+      "soul_reaving": "영혼 강탈자",
+      "lingering_wraith": "잔존하는 망령",
+      "shadow_blink": "그림자 점멸",
+      "trigger_finger": "방아쇠 손가락"
+    },
+    "reinhardt": {
+      "crusader_s_fire": "성전사의 화염",
+      "crusader_s_resolve": "성전사의 결의",
+      "shield_slam": "방패 강타",
+      "ignited_fury": "불붙은 분노"
+    },
+    "roadhog": {
+      "scrap_hook": "고철 갈고리",
+      "shrapnel_launcher": "파편 발사기",
+      "hogdrogen_exposure": "호그가스 노출",
+      "pulled_pork": "풀드포크"
+    },
+    "shion": {
+      "rapid_reload": "신속 재장전",
+      "x_machina": "X 마키나",
+      "refuel": "재급유",
+      "faces_of_death": "죽음의 얼굴"
+    },
+    "sierra": {
+      "full_flight": "전력 비행",
+      "tight_grip": "단단한 손아귀",
+      "medi_drone": "의료 드론",
+      "locked_in": "대상 포착"
+    },
+    "sigma": {
+      "kinetic_cycle": "키네틱 순환",
+      "hyper_regeneration": "초재생",
+      "hyper_strike": "하이퍼 강타",
+      "levitation": "공중 부양"
+    },
+    "sojourn": {
+      "overcharged": "과충전",
+      "deceleration_field": "감속장",
+      "friction_generators": "마찰 생성기",
+      "dual_thrusters": "이중 추진기"
+    },
+    "soldier_76": {
+      "helix_propulsion": "나선 추진",
+      "tactical_salvo": "전술 일제 사격",
+      "full_stride": "전속력",
+      "stim_pack": "전투자극제"
+    },
+    "sombra": {
+      "encrypted_upload": "암호화 업로드",
+      "ctrl_alt_esc": "CTRL ALT ESC",
+      "high_speed_bandwidth": "고속 대역폭",
+      "viral_replication": "바이러스 복제"
+    },
+    "symmetra": {
+      "sentry_capacity": "포탑 용량",
+      "perfect_alignment": "완벽한 정렬",
+      "hovering_barrier": "호버 방벽",
+      "shield_battery": "보호막 배터리"
+    },
+    "torbjorn": {
+      "hammer_time": "망치질 개시",
+      "pre_heated": "예열 완료",
+      "anchor_bolts": "고정 나사",
+      "overloaded_turret": "포탑 과부하"
+    },
+    "tracer": {
+      "kinetic_reload": "키네틱 재장전",
+      "blink_packs": "점멸 팩",
+      "quantum_entanglement": "양자 얽힘",
+      "temporal_regen": "시간적 재생"
+    },
+    "vendetta": {
+      "extra_edge": "추가 칼날",
+      "raging_storm": "맹렬한 폭풍",
+      "siphoning_strike": "착취의 강타",
+      "relentless": "무자비"
+    },
+    "venture": {
+      "deep_burrow": "심층 잠복",
+      "excavation_exhilaration": "발굴의 쾌감",
+      "smart_extender": "스마트 연장기",
+      "covered_in_dirt": "먼지투성이"
+    },
+    "widowmaker": {
+      "scoped_efficiency": "저격 효율",
+      "sniper_s_instinct": "저격수의 본능",
+      "seeker_mine": "추적 지뢰",
+      "widow_s_bite": "위도우의 독니"
+    },
+    "winston": {
+      "electric_charge": "전하",
+      "heavy_landing": "묵직한 착륙",
+      "chain_lightning": "연쇄 번개",
+      "revitalizing_barrier": "활력 충전 방벽"
+    },
+    "wrecking_ball": {
+      "steamroller": "증기 롤러",
+      "multi_ball": "멀티볼",
+      "hang_time": "체공 시간",
+      "adaptive_barrier": "적응형 방벽"
+    },
+    "wuyang": {
+      "overflow": "범람",
+      "balance": "균형",
+      "ebb_and_flow": "밀물과 썰물",
+      "falling_rain": "쏟아지는 비"
+    },
+    "zarya": {
+      "jump_ups": "점프 소동",
+      "spotter": "지원 관찰",
+      "extra_oomph": "출력 증폭",
+      "energy_lance": "에너지 장창"
+    },
+    "zenyatta": {
+      "discordant_repair": "부조화의 수리",
+      "ascendance": "승천",
+      "focused_destruction": "파괴 집중",
+      "dual_harmony": "이중 조화"
+    }
+  }
+}

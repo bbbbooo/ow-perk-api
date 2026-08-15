@@ -14,4 +14,5 @@
 ## 출처
 
 - 통계: [Overlooker](https://stats.overlooker.app)
+- 한국어 특전명: [Overwatch 공식 영웅 페이지](https://overwatch.blizzard.com/ko-kr/heroes/)
 - 영웅 초상화/메타데이터: [overlooker-dev/ow-data](https://github.com/overlooker-dev/ow-data)

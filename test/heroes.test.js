@@ -8,6 +8,7 @@ const heroes = [
   { hero: "soldier_76", hero_name: "Soldier: 76" },
   { hero: "wrecking_ball", hero_name: "Wrecking Ball" },
   { hero: "winston", hero_name: "Winston" },
+  { hero: "widowmaker", hero_name: "Widowmaker" },
   { hero: "zenyatta", hero_name: "Zenyatta" },
 ];
 
@@ -18,10 +19,12 @@ test("한국어·영문·구두점 없는 이름을 해석한다", () => {
 });
 
 test("한국 커뮤니티 별명과 축약형을 해석한다", () => {
+  assert.equal(resolveHero("할머니", heroes)?.hero, "ana");
   assert.equal(resolveHero("레킹", heroes)?.hero, "wrecking_ball");
   assert.equal(resolveHero("볼", heroes)?.hero, "wrecking_ball");
   assert.equal(resolveHero("해먼드", heroes)?.hero, "wrecking_ball");
   assert.equal(resolveHero("원숭이", heroes)?.hero, "winston");
+  assert.equal(resolveHero("위도", heroes)?.hero, "widowmaker");
   assert.equal(resolveHero("야타", heroes)?.hero, "zenyatta");
   assert.equal(resolveHero("김병장", heroes)?.hero, "soldier_76");
 });

@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "discord.js";
 import { MODE_CONFIG, OW_DATA_BASE_URL, REGION_NOTICE, SOURCE_URL } from "./constants.js";
 import { koreanName } from "./heroes.js";
-import { koreanPerkName } from "./localization.js";
+import { koreanPerkDescription, koreanPerkName } from "./localization.js";
 
 export function percent(rate) {
   return `${(Number(rate) * 100).toFixed(1)}%`;
@@ -10,7 +10,12 @@ export function percent(rate) {
 export function tierLines(perks, tier, heroSlug = "") {
   const tierPerks = perks.filter((perk) => perk.tier === tier).sort((a, b) => b.pick_rate - a.pick_rate);
   if (!tierPerks.length) return "집계된 선택 기록이 없습니다.";
-  return tierPerks.map((perk, index) => `${index === 0 ? "🏆" : "▫️"} **${koreanPerkName(heroSlug, perk)}** — ${percent(perk.pick_rate)} (${perk.picks.toLocaleString("ko-KR")}회)`).join("\n");
+  const value = tierPerks.map((perk, index) => {
+    const heading = `${index === 0 ? "🏆" : "▫️"} **${koreanPerkName(heroSlug, perk)}** — ${percent(perk.pick_rate)} (${perk.picks.toLocaleString("ko-KR")}회)`;
+    const description = koreanPerkDescription(heroSlug, perk);
+    return description ? `${heading}\n↳ ${description}` : heading;
+  }).join("\n\n");
+  return value.length <= 1024 ? value : `${value.slice(0, 1021)}...`;
 }
 
 export function buildPerkEmbed(data, mode, metadata = null) {

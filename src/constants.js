@@ -8,4 +8,4 @@ export const MODE_CONFIG = Object.freeze({
 });
 
 export const SOURCE_URL = "https://stats.overlooker.app";
-export const REGION_NOTICE = "Overlooker 이용자는 해외 비중이 높아 한국 서버의 실제 선택 경향과 다를 수 있습니다.";
+export const REGION_NOTICE = "통계는 Overlooker에서 제공되므로 한국 서버의 실제 선택률과 다를 수 있습니다.";

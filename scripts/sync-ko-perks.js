@@ -8,11 +8,19 @@ const OUTPUT_URL = new URL("../src/data/perk-names.ko.json", import.meta.url);
 
 function decodeHtml(value) {
   return value
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
     .replaceAll("&amp;", "&")
+    .replaceAll("&nbsp;", " ")
     .replaceAll("&#39;", "'")
     .replaceAll("&quot;", '"')
     .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">");
+    .replaceAll("&gt;", ">")
+    .replace(/&#(\d+);/g, (_match, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_match, code) => String.fromCodePoint(Number.parseInt(code, 16)))
+    .replace(/[ \t]+/g, " ")
+    .replace(/\s*\n\s*/g, "\n")
+    .trim();
 }
 
 function officialHeroSlug(slug) {
@@ -21,9 +29,12 @@ function officialHeroSlug(slug) {
 
 function extractPerks(html) {
   const perks = new Map();
-  const pattern = /<div class="perk-details [^"]*\b(?:minor|major)\s+([1-4])">[\s\S]*?<h3 slot="subheading">([^<]+)<\/h3>/g;
+  const pattern = /<div class="perk-details [^"]*\b(?:minor|major)\s+([1-4])">[\s\S]*?<h3 slot="subheading">([\s\S]*?)<\/h3><div slot="description">([\s\S]*?)<\/div><\/blz-header>/g;
   for (const match of html.matchAll(pattern)) {
-    perks.set(Number(match[1]), decodeHtml(match[2].trim()));
+    perks.set(Number(match[1]), {
+      name: decodeHtml(match[2]),
+      description: decodeHtml(match[3]),
+    });
   }
   return perks;
 }
@@ -49,14 +60,19 @@ async function mapHero(hero) {
     throw new Error(`${hero.hero}: official perk count mismatch (en=${english.size}, ko=${korean.size})`);
   }
 
-  const names = {};
+  const localizedPerks = {};
   for (const perk of hero.perks) {
     const officialEnglish = english.get(perk.slot);
     const officialKorean = korean.get(perk.slot);
     if (!officialEnglish || !officialKorean) throw new Error(`${hero.hero}: missing slot ${perk.slot}`);
-    names[perk.slug] = officialKorean;
+    localizedPerks[perk.slug] = {
+      name: officialKorean.name,
+      description: officialKorean.description,
+      name_en: officialEnglish.name,
+      description_en: officialEnglish.description,
+    };
   }
-  return [hero.hero, names];
+  return [hero.hero, localizedPerks];
 }
 
 async function main() {

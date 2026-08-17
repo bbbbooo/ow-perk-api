@@ -5,7 +5,11 @@ const localization = JSON.parse(
 );
 
 export function koreanPerkName(heroSlug, perk) {
-  return localization.heroes[heroSlug]?.[perk.slug] ?? perk.name;
+  return localization.heroes[heroSlug]?.[perk.slug]?.name ?? perk.name;
+}
+
+export function koreanPerkDescription(heroSlug, perk) {
+  return localization.heroes[heroSlug]?.[perk.slug]?.description ?? "";
 }
 
 export function localizePerkData(data) {
@@ -15,6 +19,8 @@ export function localizePerkData(data) {
       ...perk,
       name: koreanPerkName(data.hero, perk),
       name_en: perk.name,
+      description: koreanPerkDescription(data.hero, perk),
+      description_en: localization.heroes[data.hero]?.[perk.slug]?.description_en ?? "",
     })),
   };
 }

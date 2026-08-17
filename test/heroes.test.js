@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { resolveHero, searchHeroes } from "../src/heroes.js";
+import { resolveHero, resolveKnownHero, searchHeroes } from "../src/heroes.js";
 
 const heroes = [
   { hero: "ana", hero_name: "Ana" },
@@ -27,6 +27,13 @@ test("한국 커뮤니티 별명과 축약형을 해석한다", () => {
   assert.equal(resolveHero("위도", heroes)?.hero, "widowmaker");
   assert.equal(resolveHero("야타", heroes)?.hero, "zenyatta");
   assert.equal(resolveHero("김병장", heroes)?.hero, "soldier_76");
+});
+
+test("알려진 영웅은 API 목록 없이 바로 해석한다", () => {
+  assert.equal(resolveKnownHero("할머니")?.hero, "ana");
+  assert.equal(resolveKnownHero("볼")?.hero, "wrecking_ball");
+  assert.equal(resolveKnownHero("Soldier 76")?.hero, "soldier_76");
+  assert.equal(resolveKnownHero("존재하지 않는 영웅"), null);
 });
 
 test("자동완성은 부분 문자열을 찾는다", () => {

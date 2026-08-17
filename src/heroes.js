@@ -45,6 +45,18 @@ export function resolveHero(input, heroes) {
   }) ?? null;
 }
 
+export function resolveKnownHero(input) {
+  const needle = normalize(input);
+  if (!needle) return null;
+
+  for (const [hero, heroAliases] of Object.entries(aliases)) {
+    if ([hero, ...heroAliases].some((candidate) => normalize(candidate) === needle)) {
+      return { hero, hero_name: heroAliases[0] ?? hero };
+    }
+  }
+  return null;
+}
+
 export function searchHeroes(input, heroes, limit = 25) {
   const needle = normalize(input);
   return heroes.filter((hero) => {

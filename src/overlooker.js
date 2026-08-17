@@ -1,29 +1,41 @@
 import { MODE_CONFIG, OVERLOOKER_BASE_URL, OW_DATA_BASE_URL } from "./constants.js";
 
 const cache = new Map();
+const pendingRequests = new Map();
 const ttl = Number.parseInt(process.env.CACHE_TTL_MS ?? "300000", 10);
+const staleTtl = Number.parseInt(process.env.STALE_CACHE_TTL_MS ?? "21600000", 10);
+const upstreamTimeout = Number.parseInt(process.env.UPSTREAM_TIMEOUT_MS ?? "12000", 10);
+const upstreamRetries = Number.parseInt(process.env.UPSTREAM_RETRIES ?? "3", 10);
 
-function cacheGet(key) {
+function cacheGet(key, allowStale = false) {
   const entry = cache.get(key);
-  if (!entry || Date.now() >= entry.expiresAt) {
+  if (!entry) return null;
+  const now = Date.now();
+  if (now >= entry.staleUntil) {
     cache.delete(key);
     return null;
   }
+  if (!allowStale && now >= entry.expiresAt) return null;
   return entry.value;
 }
 
-function cacheSet(key, value, customTtl = ttl) {
-  cache.set(key, { value, expiresAt: Date.now() + customTtl });
+function cacheSet(key, value, customTtl = ttl, customStaleTtl = staleTtl) {
+  const expiresAt = Date.now() + customTtl;
+  cache.set(key, { value, expiresAt, staleUntil: expiresAt + customStaleTtl });
   return value;
+}
+
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function getJson(url) {
   let lastError;
-  for (let attempt = 0; attempt < 2; attempt += 1) {
+  for (let attempt = 0; attempt < upstreamRetries; attempt += 1) {
     try {
       const response = await fetch(url, {
         headers: { accept: "application/json", "user-agent": "ow-perk-api/1.0" },
-        signal: AbortSignal.timeout(8_000),
+        signal: AbortSignal.timeout(upstreamTimeout),
       });
       if (!response.ok) {
         const error = new Error(`Upstream returned ${response.status}`);
@@ -33,11 +45,39 @@ async function getJson(url) {
       return await response.json();
     } catch (error) {
       lastError = error;
-      if (attempt === 0 && (!error.status || error.status >= 500)) continue;
+      const retryable = !error.status || error.status === 429 || error.status >= 500;
+      if (retryable && attempt < upstreamRetries - 1) {
+        await wait(400 * (attempt + 1));
+        continue;
+      }
       throw error;
     }
   }
   throw lastError;
+}
+
+async function getWithCache(key, loader, customTtl = ttl, customStaleTtl = staleTtl) {
+  const cached = cacheGet(key);
+  if (cached) return cached;
+  if (pendingRequests.has(key)) return pendingRequests.get(key);
+
+  const request = (async () => {
+    try {
+      return cacheSet(key, await loader(), customTtl, customStaleTtl);
+    } catch (error) {
+      const stale = cacheGet(key, true);
+      if (stale) {
+        console.warn(`[upstream] ${key} 요청 실패, 만료된 캐시를 사용합니다:`, error.message);
+        return stale;
+      }
+      throw error;
+    } finally {
+      pendingRequests.delete(key);
+    }
+  })();
+
+  pendingRequests.set(key, request);
+  return request;
 }
 
 function urlFor(path = "", mode = "all") {
@@ -50,17 +90,15 @@ function urlFor(path = "", mode = "all") {
 
 export async function getHeroes(mode = "all") {
   const key = `heroes:${mode}`;
-  const cached = cacheGet(key);
-  if (cached) return cached;
-  const data = await getJson(urlFor("", mode));
-  return cacheSet(key, data.heroes ?? []);
+  return getWithCache(key, async () => {
+    const data = await getJson(urlFor("", mode));
+    return data.heroes ?? [];
+  });
 }
 
 export async function getHeroPerks(slug, mode = "all") {
   const key = `hero:${slug}:${mode}`;
-  const cached = cacheGet(key);
-  if (cached) return cached;
-  return cacheSet(key, await getJson(urlFor(encodeURIComponent(slug), mode)));
+  return getWithCache(key, () => getJson(urlFor(encodeURIComponent(slug), mode)));
 }
 
 export async function getHeroMetadata(slug) {
@@ -68,7 +106,12 @@ export async function getHeroMetadata(slug) {
   let heroes = cacheGet(key);
   if (!heroes) {
     try {
-      heroes = cacheSet(key, await getJson(`${OW_DATA_BASE_URL}/heroes.json`), 24 * 60 * 60 * 1000);
+      heroes = await getWithCache(
+        key,
+        () => getJson(`${OW_DATA_BASE_URL}/heroes.json`),
+        24 * 60 * 60 * 1000,
+        7 * 24 * 60 * 60 * 1000,
+      );
     } catch {
       return null;
     }
@@ -78,4 +121,5 @@ export async function getHeroMetadata(slug) {
 
 export function clearCache() {
   cache.clear();
+  pendingRequests.clear();
 }

@@ -9,6 +9,9 @@ env:
   PERK_CHANNEL_ID: ""
   PORT: "3000"
   CACHE_TTL_MS: "300000"
+  STALE_CACHE_TTL_MS: "21600000"
+  UPSTREAM_TIMEOUT_MS: "12000"
+  UPSTREAM_RETRIES: "3"
 git:
   autoDeploy: true
   branch: main

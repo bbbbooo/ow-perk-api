@@ -1,6 +1,6 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import { buildPerkEmbed } from "./formatter.js";
-import { resolveHero } from "./heroes.js";
+import { resolveHero, resolveKnownHero } from "./heroes.js";
 import { parseDirectPerkCommand, parsePerkCommand } from "./message-command.js";
 import { getHeroMetadata, getHeroPerks, getHeroes } from "./overlooker.js";
 
@@ -16,8 +16,11 @@ function getPerkChannelIds() {
 }
 
 async function handlePerkCommand(message, { heroQuery, mode }) {
-  const heroes = await getHeroes(mode);
-  const hero = resolveHero(heroQuery, heroes);
+  let hero = resolveKnownHero(heroQuery);
+  if (!hero) {
+    const heroes = await getHeroes(mode);
+    hero = resolveHero(heroQuery, heroes);
+  }
   if (!hero) {
     await message.reply("영웅을 찾지 못했습니다. 이름을 확인해 주세요. 예: `/특전 아나`");
     return;

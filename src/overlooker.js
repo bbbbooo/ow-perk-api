@@ -1,4 +1,8 @@
+import { setDefaultResultOrder } from "node:dns";
 import { MODE_CONFIG, OVERLOOKER_BASE_URL, OW_DATA_BASE_URL } from "./constants.js";
+import { getFallbackHeroPerks, getFallbackHeroes } from "./fallback.js";
+
+setDefaultResultOrder("ipv4first");
 
 const cache = new Map();
 const pendingRequests = new Map();
@@ -56,7 +60,7 @@ async function getJson(url) {
   throw lastError;
 }
 
-async function getWithCache(key, loader, customTtl = ttl, customStaleTtl = staleTtl) {
+async function getWithCache(key, loader, customTtl = ttl, customStaleTtl = staleTtl, fallback = null) {
   const cached = cacheGet(key);
   if (cached) return cached;
   if (pendingRequests.has(key)) return pendingRequests.get(key);
@@ -69,6 +73,11 @@ async function getWithCache(key, loader, customTtl = ttl, customStaleTtl = stale
       if (stale) {
         console.warn(`[upstream] ${key} 요청 실패, 만료된 캐시를 사용합니다:`, error.message);
         return stale;
+      }
+      const fallbackValue = fallback?.();
+      if (fallbackValue) {
+        console.warn(`[upstream] ${key} 요청 실패, 저장된 스냅샷을 사용합니다:`, error.message);
+        return cacheSet(key, fallbackValue, 60_000, customStaleTtl);
       }
       throw error;
     } finally {
@@ -93,12 +102,18 @@ export async function getHeroes(mode = "all") {
   return getWithCache(key, async () => {
     const data = await getJson(urlFor("", mode));
     return data.heroes ?? [];
-  });
+  }, ttl, staleTtl, () => getFallbackHeroes(mode));
 }
 
 export async function getHeroPerks(slug, mode = "all") {
   const key = `hero:${slug}:${mode}`;
-  return getWithCache(key, () => getJson(urlFor(encodeURIComponent(slug), mode)));
+  return getWithCache(
+    key,
+    () => getJson(urlFor(encodeURIComponent(slug), mode)),
+    ttl,
+    staleTtl,
+    () => getFallbackHeroPerks(slug, mode),
+  );
 }
 
 export async function getHeroMetadata(slug) {

@@ -8,6 +8,7 @@
     "start": "node --env-file-if-exists=.env src/index.js",
     "clear-commands": "node src/clear-commands.js",
     "sync:perks-ko": "node scripts/sync-ko-perks.js",
+    "sync:perk-snapshots": "node scripts/sync-perk-snapshots.js",
     "test": "node --test"
   },
   "engines": {

@@ -21,10 +21,13 @@ export function tierLines(perks, tier, heroSlug = "") {
 export function buildPerkEmbed(data, mode, metadata = null) {
   const displayName = koreanName(data.hero) ?? data.hero_name;
   const sampleWarning = data.sample_size < 100 ? "\n⚠️ 표본이 100게임 미만이므로 결과를 참고용으로만 봐주세요." : "";
+  const fallbackWarning = data._fallback
+    ? `\n⚠️ 실시간 연결 지연으로 ${new Date(data._snapshotAt).toLocaleString("ko-KR")}에 저장된 통계를 표시합니다.`
+    : "";
   const embed = new EmbedBuilder()
     .setColor(metadata?.color ?? 0xf06414)
     .setTitle(`${displayName} (${data.hero_name}) 특전 선택률`)
-    .setDescription(`**${MODE_CONFIG[mode].label}** · 표본 ${data.sample_size.toLocaleString("ko-KR")}게임${sampleWarning}`)
+    .setDescription(`**${MODE_CONFIG[mode].label}** · 표본 ${data.sample_size.toLocaleString("ko-KR")}게임${sampleWarning}${fallbackWarning}`)
     .addFields(
       { name: "소형 특전", value: tierLines(data.perks, "minor", data.hero) },
       { name: "주요 특전", value: tierLines(data.perks, "major", data.hero) },

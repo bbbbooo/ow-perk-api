@@ -7,11 +7,12 @@ export const REASON_KINDS = Object.freeze(["mechanic", "playstyle", "role_slot"]
 
 const primaryRelationData = JSON.parse(readFileSync(new URL("./data/relations/relations.json", import.meta.url), "utf8"));
 const rosterRelationData = JSON.parse(readFileSync(new URL("./data/relations/roster-relations.json", import.meta.url), "utf8"));
+const expandedRelationData = JSON.parse(readFileSync(new URL("./data/relations/expanded-relations.json", import.meta.url), "utf8"));
 const relationData = {
   ...primaryRelationData,
-  data_version: rosterRelationData.data_version,
-  last_reviewed_at: rosterRelationData.last_reviewed_at,
-  relations: [...primaryRelationData.relations, ...rosterRelationData.relations],
+  data_version: expandedRelationData.data_version,
+  last_reviewed_at: expandedRelationData.last_reviewed_at,
+  relations: [...primaryRelationData.relations, ...rosterRelationData.relations, ...expandedRelationData.relations],
 };
 const sourceData = JSON.parse(readFileSync(new URL("./data/relations/relation-sources.json", import.meta.url), "utf8"));
 const sourceById = new Map(sourceData.sources.map((source) => [source.id, source]));
@@ -96,13 +97,22 @@ export function validateRelationData(relationsDocument = relationData, sourcesDo
     const reverse = strongCounters.get(`${target}:${source}`);
     requireCondition(!reverse, `${id}와 ${reverse}: 양방향 강한 카운터는 허용하지 않습니다.`, errors);
   }
+  const verifiedRelations = (relationsDocument.relations ?? [])
+    .filter((relation) => relation.status === "verified");
   const coveredHeroes = new Set(
-    (relationsDocument.relations ?? [])
-      .filter((relation) => relation.status === "verified")
-      .flatMap((relation) => [relation.source_hero, relation.target_hero]),
+    verifiedRelations.flatMap((relation) => [relation.source_hero, relation.target_hero]),
   );
   for (const hero of heroSlugs) {
     requireCondition(coveredHeroes.has(hero), `검수 완료 관계가 없는 영웅: ${hero}`, errors);
+  }
+  for (const hero of heroSlugs) {
+    const counters = verifiedRelations.filter((relation) => relation.type === "counter" && relation.source_hero === hero).length;
+    const counteredBy = verifiedRelations.filter((relation) => relation.type === "counter" && relation.target_hero === hero).length;
+    const synergies = verifiedRelations.filter((relation) => relation.type === "synergy"
+      && (relation.source_hero === hero || relation.target_hero === hero)).length;
+    requireCondition(counters >= 3, `${hero}: 카운터하는 영웅이 3명 미만입니다.`, errors);
+    requireCondition(counteredBy >= 3, `${hero}: 카운터 영웅이 3명 미만입니다.`, errors);
+    requireCondition(synergies >= 2, `${hero}: 시너지 영웅이 2명 미만입니다.`, errors);
   }
   return errors;
 }

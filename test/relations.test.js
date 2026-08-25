@@ -52,15 +52,20 @@ test("관계 type 필터를 적용한다", () => {
   ));
 });
 
-test("모든 영웅이 최소 한 개의 검증된 관계를 가진다", () => {
+test("모든 영웅이 카운터·피카운터 3명과 시너지 2명 이상을 가진다", () => {
   for (const slug of knownHeroSlugs) {
     const data = getHeroRelations(slug);
-    const relationCount = data.counters.length
-      + data.countered_by.length
-      + data.synergies.length
-      + data.competitions.length;
-    assert.ok(relationCount > 0, `${slug} 관계가 없습니다.`);
+    assert.ok(data.counters.length >= 3, `${slug}가 카운터하는 영웅이 부족합니다.`);
+    assert.ok(data.countered_by.length >= 3, `${slug}의 카운터 영웅이 부족합니다.`);
+    assert.ok(data.synergies.length >= 2, `${slug}의 시너지 영웅이 부족합니다.`);
   }
+});
+
+test("겐지-파라와 안란-파라의 직접 상성을 제공한다", () => {
+  const genjiPharah = getPairRelations("겐지", "파라");
+  assert.ok(genjiPharah.relations.some((item) => item.source_hero === "pharah" && item.target_hero === "genji"));
+  const anranPharah = getPairRelations("안란", "파라");
+  assert.ok(anranPharah.relations.some((item) => item.source_hero === "pharah" && item.target_hero === "anran"));
 });
 
 test("두 영웅 사이의 방향별 관계를 반환한다", () => {

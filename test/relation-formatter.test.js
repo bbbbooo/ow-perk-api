@@ -22,8 +22,15 @@ test("관계 개요 Embed가 Discord 필드 제한을 지킨다", () => {
   assert.match(json.fields[0].value, /↳ 정화의 방울/);
   assert.match(json.fields[2].value, /겐지\*\* · 궁합 매우 좋음/);
   assert.doesNotMatch(json.fields[0].value, /근거 높음/);
-  assert.ok(json.fields[0].value.indexOf("키리코") < json.fields[0].value.indexOf("윈스턴"));
-  assert.ok(json.fields[2].value.indexOf("겐지") < json.fields[2].value.indexOf("윈스턴"));
+  assert.match(json.fields[0].value, /키리코/);
+  assert.match(json.fields[2].value, /겐지/);
+  assert.match(json.fields[0].value, /외 \d+명/);
+});
+
+test("받침이 있는 영웅명의 조사를 자연스럽게 표시한다", () => {
+  const json = buildRelationOverviewEmbed(getHeroRelations("안란")).toJSON();
+  assert.equal(json.fields[1].name, "🎯 안란이 카운터하는 영웅");
+  assert.equal(json.fields[2].name, "🤝 안란과 잘 맞는 영웅");
 });
 
 test("두 영웅 상성 Embed에 이유와 출처를 표시한다", () => {

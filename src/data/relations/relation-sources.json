@@ -1,7 +1,23 @@
 {
-  "data_version": "2026-08-25.2",
+  "data_version": "2026-08-25.3",
   "last_reviewed_at": "2026-08-25",
   "sources": [
+    {
+      "id": "minmax_watch_matchups",
+      "name": "minmax.watch 상성 데이터 — CounterPickGG·Counterwatch 종합",
+      "url": "https://github.com/MaikBuse/minmax-watch/blob/99aff969544ee668b7af16eb9641e37f67306b54/data/matchups.toml",
+      "kind": "aggregated_matchup_data",
+      "checked_at": "2026-08-25",
+      "usage_note_ko": "영웅별 상위 관계 선별에 사용하며 승률이나 절대적인 정답으로 해석하지 않습니다."
+    },
+    {
+      "id": "minmax_watch_synergy",
+      "name": "minmax.watch 시너지 데이터 — Counterwatch 기반",
+      "url": "https://github.com/MaikBuse/minmax-watch/blob/99aff969544ee668b7af16eb9641e37f67306b54/data/synergy.toml",
+      "kind": "aggregated_synergy_data",
+      "checked_at": "2026-08-25",
+      "usage_note_ko": "영웅별 상위 시너지 선별에 사용하며 나머지 팀 조합에 따라 달라질 수 있습니다."
+    },
     {
       "id": "blizzard_heroes",
       "name": "Overwatch 공식 영웅 및 기술 페이지",

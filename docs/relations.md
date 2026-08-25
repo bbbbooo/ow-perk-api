@@ -10,10 +10,12 @@
 
 - `src/data/relations/relations.json`: 검수 관계와 후보 상태
 - `src/data/relations/roster-relations.json`: 전체 영웅 커버리지 관계
+- `src/data/relations/expanded-relations.json`: 영웅별 주요 카운터·피카운터·시너지 확장 관계
 - `src/data/relations/relation-sources.json`: 출처 URL, 확인일, 데이터 버전
 - `src/relations.js`: 스키마 검증과 결정론적 조회
 - `scripts/validate-relations.js`: CI·로컬 검증 명령
 - `scripts/build-roster-relations.js`: 전체 영웅 관계 JSON 생성
+- `scripts/sync-expanded-relations.js`: 고정된 외부 데이터 버전에서 상위 관계를 선별해 확장 JSON 생성
 - `scripts/sync-overpicker-relations.js`: 외부 후보 동기화
 - `work/relation-sync/`: 원본 스냅샷과 정규화 후보를 저장하는 Git 제외 작업 폴더
 
@@ -39,6 +41,16 @@ npm run sync:relations:candidates
 동기화 스크립트는 `/hero-counters`와 `/hero-synergies` 원본, 수집 시각, SHA-256 해시를 `work/relation-sync/`에 저장한다. 영웅 이름 변환에 실패하면 작업 전체가 실패한다. 점수 0은 원본에는 남지만 정규화 후보에서는 제외한다.
 
 동일한 원본으로 두 번 실행하면 두 번째 diff는 `added=0 removed=0 changed=0`이어야 한다. 후보 점수는 검수 JSON을 자동으로 수정하지 않는다. OverPicker의 원본 재배포 및 상업적 이용 조건이 명확히 확인되기 전에는 작업 폴더의 원본을 커밋하거나 배포하지 않는다.
+
+## 전 영웅 관계 갱신
+
+```bash
+npm run sync:relations:expanded
+```
+
+확장 동기화는 `minmax.watch`의 고정 커밋에서 CounterPickGG·Counterwatch 종합 상성과 Counterwatch 기반 시너지를 읽는다. 영웅마다 상위 카운터 3명, 카운터하는 상대 3명, 시너지 2명을 선별하고 기존 공식 기술 근거 관계를 우선한다. 실행 중에만 외부 데이터를 요청하며 Discord/API 사용자 요청은 배포된 JSON만 읽는다.
+
+확장 관계는 데이터 기반 추천이며 승률이나 절대적인 정답이 아니다. 구체적인 기술 상호작용을 별도로 검수한 관계는 더 높은 신뢰도로 유지하고, 나머지는 중간 신뢰도의 플레이스타일 관계로 표시한다.
 
 ## API
 
@@ -74,4 +86,4 @@ x-relations-admin-token: <RELATIONS_ADMIN_TOKEN>
 아나 로드호그 상성
 ```
 
-영웅명 뒤에 `상성`을 붙이는 형식이 기본이다. 기존 `/관계 아나`와 `/상성 아나 로드호그`도 이전 사용자와의 호환을 위해 유지한다. 관계 데이터 검증기는 `src/heroes.js`에 등록된 모든 영웅이 최소 하나 이상의 `verified` 관계에 포함되는지 검사한다.
+영웅명 뒤에 `상성`을 붙이는 형식이 기본이다. 기존 `/관계 아나`와 `/상성 아나 로드호그`도 이전 사용자와의 호환을 위해 유지한다. 관계 데이터 검증기는 모든 영웅이 카운터 3명, 카운터하는 상대 3명, 시너지 2명 이상의 `verified` 관계를 갖는지 검사한다.

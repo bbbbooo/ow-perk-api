@@ -44,13 +44,25 @@ function relationLine(relation, hero, kind) {
 }
 
 function relationField(name, relations, hero, kind) {
-  const value = relations.length
-    ? [...relations]
-      .sort((left, right) => right.strength - left.strength || right.confidence - left.confidence)
+  const sorted = [...relations]
+    .sort((left, right) => right.strength - left.strength || right.confidence - left.confidence);
+  const value = sorted.length
+    ? sorted
+      .slice(0, 5)
       .map((relation) => relationLine(relation, hero, kind))
+      .concat(sorted.length > 5 ? [`외 ${sorted.length - 5}명은 두 영웅 비교로 확인할 수 있어요.`] : [])
       .join("\n\n")
     : "아직 확인된 상성 정보가 없어요.";
   return { name, value: truncate(value) };
+}
+
+function withJosa(value, batchimJosa, noBatchimJosa) {
+  const text = String(value);
+  const last = text.at(-1);
+  const codePoint = last?.codePointAt(0) ?? 0;
+  const hangulBatchim = codePoint >= 0xac00 && codePoint <= 0xd7a3 && (codePoint - 0xac00) % 28 !== 0;
+  const digitBatchim = /[013678]$/.test(text);
+  return `${text}${hangulBatchim || digitBatchim ? batchimJosa : noBatchimJosa}`;
 }
 
 export function buildRelationOverviewEmbed(data) {
@@ -60,11 +72,11 @@ export function buildRelationOverviewEmbed(data) {
     .setDescription("카운터부터 확인해 보세요. 맵과 조합에 따라 실제 상성은 달라질 수 있어요.")
     .addFields(
       relationField(`🚨 ${data.hero_name}의 카운터`, data.countered_by, data.hero, "counter"),
-      relationField(`🎯 ${data.hero_name}가 카운터하는 영웅`, data.counters, data.hero, "counter"),
-      relationField(`🤝 ${data.hero_name}와 잘 맞는 영웅`, data.synergies, data.hero, "synergy"),
+      relationField(`🎯 ${withJosa(data.hero_name, "이", "가")} 카운터하는 영웅`, data.counters, data.hero, "counter"),
+      relationField(`🤝 ${withJosa(data.hero_name, "과", "와")} 잘 맞는 영웅`, data.synergies, data.hero, "synergy"),
       relationField("🔄 같은 역할의 대체·경쟁 영웅", data.competitions, data.hero, "competition"),
     )
-    .setFooter({ text: `관계 데이터 ${data.data_version} · 최종 검수 ${data.last_reviewed_at}` });
+    .setFooter({ text: `출처: 공식 기술 정보·CounterPickGG·Counterwatch 종합 · ${data.data_version} · ${data.last_reviewed_at}` });
 }
 
 function pairRelationField(relation) {

@@ -10,6 +10,17 @@ const ttl = Number.parseInt(process.env.CACHE_TTL_MS ?? "300000", 10);
 const staleTtl = Number.parseInt(process.env.STALE_CACHE_TTL_MS ?? "21600000", 10);
 const upstreamTimeout = Number.parseInt(process.env.UPSTREAM_TIMEOUT_MS ?? "12000", 10);
 const upstreamRetries = Number.parseInt(process.env.UPSTREAM_RETRIES ?? "3", 10);
+const KOREA_UTC_OFFSET_MS = 9 * 60 * 60 * 1000;
+
+export function millisecondsUntilNextKoreanMidnight(now = Date.now()) {
+  const koreaTime = new Date(now + KOREA_UTC_OFFSET_MS);
+  const nextMidnightAsUtc = Date.UTC(
+    koreaTime.getUTCFullYear(),
+    koreaTime.getUTCMonth(),
+    koreaTime.getUTCDate() + 1,
+  ) - KOREA_UTC_OFFSET_MS;
+  return nextMidnightAsUtc - now;
+}
 
 function cacheGet(key, allowStale = false) {
   const entry = cache.get(key);
@@ -102,7 +113,7 @@ export async function getHeroes(mode = "all") {
   return getWithCache(key, async () => {
     const data = await getJson(urlFor("", mode));
     return data.heroes ?? [];
-  }, ttl, staleTtl, () => getFallbackHeroes(mode));
+  }, millisecondsUntilNextKoreanMidnight(), staleTtl, () => getFallbackHeroes(mode));
 }
 
 export async function getHeroPerks(slug, mode = "all") {
@@ -110,7 +121,7 @@ export async function getHeroPerks(slug, mode = "all") {
   return getWithCache(
     key,
     () => getJson(urlFor(encodeURIComponent(slug), mode)),
-    ttl,
+    millisecondsUntilNextKoreanMidnight(),
     staleTtl,
     () => getFallbackHeroPerks(slug, mode),
   );

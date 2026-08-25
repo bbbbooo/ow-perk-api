@@ -1,5 +1,8 @@
 export function parseRelationCommand(content) {
   const value = String(content ?? "").trim();
+  const suffix = value.match(/^(.+?)\s+상성$/i);
+  if (suffix) return { kind: "suffix", query: suffix[1].trim() };
+
   const overview = value.match(/^\/?관계(?:\s+(.+))?$/i);
   if (overview) {
     if (!overview[1]) return { error: "사용법: `/관계 아나`" };

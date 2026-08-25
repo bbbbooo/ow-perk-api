@@ -21,7 +21,10 @@ test("관계 API 정상 조회, 필터, 400, 404를 처리한다", async () => {
 
     const filtered = await fetch(`${baseUrl}/api/relations/dva?type=competition`);
     assert.equal(filtered.status, 200);
-    assert.equal((await filtered.json()).competitions.length, 1);
+    const filteredData = await filtered.json();
+    assert.ok(filteredData.competitions.some((item) =>
+      [item.source_hero, item.target_hero].includes("winston")
+    ));
 
     assert.equal((await fetch(`${baseUrl}/api/relations/ana?type=wrong`)).status, 400);
     assert.equal((await fetch(`${baseUrl}/api/relations/not-a-hero`)).status, 404);

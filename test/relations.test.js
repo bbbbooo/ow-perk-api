@@ -7,6 +7,7 @@ import {
   resolveRelationHeroPair,
   validateRelationData,
 } from "../src/relations.js";
+import { knownHeroSlugs } from "../src/heroes.js";
 
 test("관계 데이터가 스키마 검증을 통과한다", () => {
   assert.deepEqual(validateRelationData(), []);
@@ -45,7 +46,20 @@ test("관계 type 필터를 적용한다", () => {
   const data = getHeroRelations("디바", { type: "competition" });
   assert.equal(data.counters.length, 0);
   assert.equal(data.synergies.length, 0);
-  assert.equal(data.competitions.length, 1);
+  assert.ok(data.competitions.some((item) =>
+    [item.source_hero, item.target_hero].includes("winston")
+  ));
+});
+
+test("모든 영웅이 최소 한 개의 검증된 관계를 가진다", () => {
+  for (const slug of knownHeroSlugs) {
+    const data = getHeroRelations(slug);
+    const relationCount = data.counters.length
+      + data.countered_by.length
+      + data.synergies.length
+      + data.competitions.length;
+    assert.ok(relationCount > 0, `${slug} 관계가 없습니다.`);
+  }
 });
 
 test("두 영웅 사이의 방향별 관계를 반환한다", () => {

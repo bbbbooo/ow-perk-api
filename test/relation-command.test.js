@@ -7,6 +7,14 @@ test("관계 명령을 해석한다", () => {
   assert.deepEqual(parseRelationCommand("관계 할머니"), { kind: "overview", heroQuery: "할머니" });
 });
 
+test("영웅명 뒤에 상성을 붙이는 형식을 해석한다", () => {
+  assert.deepEqual(parseRelationCommand("아나 상성"), { kind: "suffix", query: "아나" });
+  assert.deepEqual(parseRelationCommand("아나 로드호그 상성"), {
+    kind: "suffix",
+    query: "아나 로드호그",
+  });
+});
+
 test("상성 명령의 두 영웅 입력을 보존한다", () => {
   assert.deepEqual(parseRelationCommand("/상성 아나 로드호그"), {
     kind: "matchup",

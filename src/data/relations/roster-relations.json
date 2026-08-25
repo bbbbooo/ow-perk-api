@@ -1,0 +1,1197 @@
+{
+  "schema_version": 1,
+  "data_version": "2026-08-25.2",
+  "last_reviewed_at": "2026-08-25",
+  "relations": [
+    {
+      "id": "anran__wuyang__synergy",
+      "source_hero": "anran",
+      "target_hero": "wuyang",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "inferno_rush",
+          "target_trait": "rushing_torrent",
+          "summary_ko": "안란의 근거리 화염 압박에 우양이 원거리 회복과 이동 지원을 더해 진입과 이탈을 돕습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ashe__mercy__synergy",
+      "source_hero": "ashe",
+      "target_hero": "mercy",
+      "type": "synergy",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "damage_boost",
+          "target_trait": "viper_and_dynamite",
+          "summary_ko": "메르시의 공격력 증폭이 애쉬의 중장거리 정밀 사격과 다이너마이트 압박을 강화합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "baptiste__bastion__synergy",
+      "source_hero": "baptiste",
+      "target_hero": "bastion",
+      "type": "synergy",
+      "strength": 0.7,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "immortality_field_and_amplification_matrix",
+          "target_trait": "configuration_assault",
+          "summary_ko": "불사 장치가 바스티온의 집중 화력 시간을 보호하고 증폭 매트릭스가 투사 화력을 강화합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ana__brigitte__synergy",
+      "source_hero": "ana",
+      "target_hero": "brigitte",
+      "type": "synergy",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "barrier_shield_and_whip_shot",
+          "target_trait": "long_range_support",
+          "summary_ko": "브리기테가 방벽과 밀쳐내기로 아나에게 접근하는 적을 견제해 장거리 지원 각도를 지켜줍니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ana__cassidy__synergy",
+      "source_hero": "ana",
+      "target_hero": "cassidy",
+      "type": "synergy",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "sleep_dart",
+          "target_trait": "precision_hitscan",
+          "summary_ko": "수면총으로 멈춘 적은 캐서디가 정밀 사격으로 후속 피해를 넣기 쉬운 표적이 됩니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "dmon__dva__competition",
+      "source_hero": "dmon",
+      "target_hero": "dva",
+      "type": "competition",
+      "strength": 0.75,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "role_slot",
+          "source_ability": "power_barrier_and_propulsors",
+          "target_trait": "defense_matrix_and_boosters",
+          "summary_ko": "두 영웅 모두 MEKA 기체와 수평 기동기를 활용하는 탱커로 역할 고정 5대5의 한 탱커 슬롯을 두고 경쟁합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "domina__symmetra__synergy",
+      "source_hero": "domina",
+      "target_hero": "symmetra",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "barrier_array_and_sonic_repulsors",
+          "target_trait": "teleporter_and_sentry_turret",
+          "summary_ko": "도미나의 방벽·밀쳐내기와 시메트라의 순간이동기·감시 포탑이 좁은 구역의 공간 통제를 겹쳐 만듭니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "doomfist__kiriko__synergy",
+      "source_hero": "doomfist",
+      "target_hero": "kiriko",
+      "type": "synergy",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "swift_step_and_protection_suzu",
+          "target_trait": "seismic_slam_and_rocket_punch",
+          "summary_ko": "키리코는 순보로 둠피스트의 진입을 따라가고 정화의 방울로 진입 직후의 해로운 효과를 완화할 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "echo__mercy__synergy",
+      "source_hero": "echo",
+      "target_hero": "mercy",
+      "type": "synergy",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "guardian_angel_and_damage_boost",
+          "target_trait": "flight",
+          "summary_ko": "수호천사로 비행 중인 에코를 따라가며 회복과 공격력 증폭을 지속할 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "emre__freja__synergy",
+      "source_hero": "emre",
+      "target_hero": "freja",
+      "type": "synergy",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "synthetic_burst_rifle_and_cyber_frag",
+          "target_trait": "take_aim",
+          "summary_ko": "엠레의 점사와 수류탄 압박에 프레야의 원거리 폭발 사격을 맞추면 같은 표적에 집중 피해를 줄 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ana__genji__synergy",
+      "source_hero": "ana",
+      "target_hero": "genji",
+      "type": "synergy",
+      "strength": 0.85,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "nano_boost",
+          "target_trait": "dragonblade",
+          "summary_ko": "나노 강화제가 용검을 사용하는 겐지의 공격력을 높이고 받는 피해를 줄여 진입 지속력을 강화합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "hanzo__zarya__synergy",
+      "source_hero": "hanzo",
+      "target_hero": "zarya",
+      "type": "synergy",
+      "strength": 0.8,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "graviton_surge",
+          "target_trait": "dragonstrike",
+          "summary_ko": "중력자탄으로 적을 한곳에 묶으면 용의 일격이 여러 대상을 지나가도록 연계할 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "hazard__lucio__synergy",
+      "source_hero": "hazard",
+      "target_hero": "lucio",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "crossfade_speed",
+          "target_trait": "violent_leap",
+          "summary_ko": "루시우의 속도 증폭이 해저드의 근거리 진입과 이탈을 보조해 난전 개시 속도를 높입니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "illari__sigma__synergy",
+      "source_hero": "illari",
+      "target_hero": "sigma",
+      "type": "synergy",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "experimental_barrier",
+          "target_trait": "healing_pylon_and_solar_rifle",
+          "summary_ko": "시그마의 방벽과 원거리 견제가 일리아리의 태양석과 중거리 사격이 유지될 공간을 만듭니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "jetpack_cat__pharah__synergy",
+      "source_hero": "jetpack_cat",
+      "target_hero": "pharah",
+      "type": "synergy",
+      "strength": 0.7,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "lifeline_and_frenetic_flight",
+          "target_trait": "jump_jet",
+          "summary_ko": "제트팩 캣은 비행과 생명줄로 공중 영웅을 운반·회복할 수 있어 파라의 공중 체류를 지원합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "kiriko__junker_queen__counter",
+      "source_hero": "kiriko",
+      "target_hero": "junker_queen",
+      "type": "counter",
+      "strength": 0.7,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "protection_suzu",
+          "target_trait": "wounds_and_rampage",
+          "summary_ko": "정화의 방울이 상처로 인한 지속 피해와 치유 차단 같은 해로운 효과를 정화해 정커퀸의 압박을 줄입니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "pharah__junkrat__counter",
+      "source_hero": "pharah",
+      "target_hero": "junkrat",
+      "type": "counter",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "jump_jet_and_hover_jets",
+          "target_trait": "frag_launcher_and_steel_trap",
+          "summary_ko": "파라는 공중에서 공격해 지면을 따라 튀는 정크랫의 유탄과 덫이 닿기 어려운 각도를 만들 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "juno__ramattra__synergy",
+      "source_hero": "juno",
+      "target_hero": "ramattra",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "hyper_ring_and_orbital_ray",
+          "target_trait": "nemesis_form",
+          "summary_ko": "주노의 이동 가속과 궤도 광선이 라마트라가 네메시스 형태로 거리를 좁히고 버티는 것을 돕습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "lifeweaver__reinhardt__synergy",
+      "source_hero": "lifeweaver",
+      "target_hero": "reinhardt",
+      "type": "synergy",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "life_grip",
+          "target_trait": "charge",
+          "summary_ko": "생명의 손아귀가 돌진으로 깊게 들어간 라인하르트를 안전한 위치로 회수할 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ana__mauga__counter",
+      "source_hero": "ana",
+      "target_hero": "mauga",
+      "type": "counter",
+      "strength": 0.8,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "biotic_grenade",
+          "target_trait": "cardiac_overdrive",
+          "summary_ko": "생체 수류탄의 치유 차단이 근거리에서 체력 회복에 의존하는 마우가의 버티는 시간을 제한합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "mei__reaper__synergy",
+      "source_hero": "mei",
+      "target_hero": "reaper",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "ice_wall",
+          "target_trait": "hellfire_shotguns",
+          "summary_ko": "빙벽으로 적을 고립시키면 리퍼가 가까운 거리에서 산탄 피해를 집중하기 쉬워집니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "mizuki__emre__counter",
+      "source_hero": "mizuki",
+      "target_hero": "emre",
+      "type": "counter",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "kekkai_sanctuary",
+          "target_trait": "synthetic_burst_rifle_and_cyber_frag",
+          "summary_ko": "미즈키의 결계 사당은 통과하는 적 투사체를 흡수해 엠레의 점사와 사이버 수류탄 압박을 줄입니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "doomfist__moira__synergy",
+      "source_hero": "doomfist",
+      "target_hero": "moira",
+      "type": "synergy",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "fade_and_biotic_orb",
+          "target_trait": "seismic_slam",
+          "summary_ko": "모이라는 소멸로 둠피스트의 빠른 진입 경로를 따라가고 생체 구슬로 난전 지역을 지원할 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "orisa__roadhog__counter",
+      "source_hero": "orisa",
+      "target_hero": "roadhog",
+      "type": "counter",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "energy_javelin_and_fortify",
+          "target_trait": "take_a_breather_and_chain_hook",
+          "summary_ko": "오리사의 투창은 숨 돌리기를 방해할 수 있고 방어 강화는 갈고리와 강제 이동의 영향을 줄입니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "brigitte__shion__counter",
+      "source_hero": "brigitte",
+      "target_hero": "shion",
+      "type": "counter",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "barrier_shield_and_whip_shot",
+          "target_trait": "evade_and_satsuriku_spree",
+          "summary_ko": "브리기테의 방벽과 밀쳐내기는 짧은 거리에서 연속 진입하는 시온의 공격 흐름을 끊는 데 도움을 줍니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "mercy__sierra__synergy",
+      "source_hero": "mercy",
+      "target_hero": "sierra",
+      "type": "synergy",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "damage_boost",
+          "target_trait": "tracking_shot_and_helix_rifle",
+          "summary_ko": "공격력 증폭이 추적 사격으로 표적을 고정한 시에라의 지속 화력을 높일 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "mercy__sojourn__synergy",
+      "source_hero": "mercy",
+      "target_hero": "sojourn",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "damage_boost",
+          "target_trait": "railgun",
+          "summary_ko": "공격력 증폭이 소전의 기관포와 충전된 레일건의 집중 피해를 강화합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ana__soldier_76__synergy",
+      "source_hero": "ana",
+      "target_hero": "soldier_76",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "nano_boost",
+          "target_trait": "tactical_visor",
+          "summary_ko": "나노 강화제가 전술 조준경 동안 솔저: 76의 공격력을 높이고 받는 피해를 줄입니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "sombra__wrecking_ball__counter",
+      "source_hero": "sombra",
+      "target_hero": "wrecking_ball",
+      "type": "counter",
+      "strength": 0.75,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "hack",
+          "target_trait": "roll_and_grappling_claw",
+          "summary_ko": "해킹으로 구르기와 갈고리 기동을 제한하면 레킹볼이 진입 후 빠져나가기 어려워집니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "tracer__winston__synergy",
+      "source_hero": "tracer",
+      "target_hero": "winston",
+      "type": "synergy",
+      "strength": 0.7,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "jump_pack",
+          "target_trait": "blink",
+          "summary_ko": "윈스턴의 점프 팩 진입에 트레이서가 점멸로 합류해 같은 후방 표적에 압박을 집중할 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "winston__torbjorn__counter",
+      "source_hero": "winston",
+      "target_hero": "torbjorn",
+      "type": "counter",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "tesla_cannon_and_barrier_projector",
+          "target_trait": "deploy_turret",
+          "summary_ko": "윈스턴의 전기 원뿔 공격은 포탑 주변의 여러 대상을 동시에 압박하며 방벽으로 포탑 사선을 나눌 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "lucio__vendetta__synergy",
+      "source_hero": "lucio",
+      "target_hero": "vendetta",
+      "type": "synergy",
+      "strength": 0.65,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "crossfade_speed",
+          "target_trait": "palatine_fang",
+          "summary_ko": "속도 증폭이 근접 공격 중심인 벤데타가 거리를 좁혀 검 공격을 시작하도록 돕습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "juno__venture__synergy",
+      "source_hero": "juno",
+      "target_hero": "venture",
+      "type": "synergy",
+      "strength": 0.55,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "hyper_ring_and_orbital_ray",
+          "target_trait": "burrow_and_drill_dash",
+          "summary_ko": "주노의 이동 가속이 벤처의 잠복·돌진 진입 속도를 보완하고 궤도 광선이 근거리 교전을 지원합니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "winston__widowmaker__counter",
+      "source_hero": "winston",
+      "target_hero": "widowmaker",
+      "type": "counter",
+      "strength": 0.7,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "jump_pack_and_barrier_projector",
+          "target_trait": "widows_kiss",
+          "summary_ko": "점프 팩으로 저격 위치에 직접 접근하고 방벽을 놓아 위도우메이커의 원거리 사선을 끊을 수 있습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "winston__zenyatta__synergy",
+      "source_hero": "winston",
+      "target_hero": "zenyatta",
+      "type": "synergy",
+      "strength": 0.6,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "orb_of_discord",
+          "target_trait": "jump_pack",
+          "summary_ko": "부조화의 구슬이 붙은 표적에 윈스턴이 점프 팩으로 진입하면 팀의 집중 피해를 모으기 쉬워집니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    }
+  ]
+}

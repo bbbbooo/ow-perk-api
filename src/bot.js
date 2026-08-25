@@ -5,7 +5,7 @@ import { parseDirectPerkCommand, parsePerkCommand } from "./message-command.js";
 import { getHeroMetadata, getHeroPerks, getHeroes } from "./overlooker.js";
 import { parseRelationCommand } from "./relation-command.js";
 import { buildPairRelationEmbed, buildRelationOverviewEmbed } from "./relation-formatter.js";
-import { getHeroRelations, getPairRelations, resolveRelationHeroPair } from "./relations.js";
+import { getHeroRelations, getPairRelations, resolveRelationHero, resolveRelationHeroPair } from "./relations.js";
 
 const DIRECT_COMMAND_COOLDOWN_MS = 3_000;
 
@@ -41,10 +41,25 @@ async function handleRelationCommand(message, command) {
     await message.reply(command.error);
     return;
   }
-  if (command.kind === "overview") {
-    const data = getHeroRelations(command.heroQuery);
+  if (command.kind === "overview" || command.kind === "suffix") {
+    const heroQuery = command.kind === "suffix" ? command.query : command.heroQuery;
+    const directHero = resolveRelationHero(heroQuery);
+    if (directHero) {
+      const data = getHeroRelations(directHero.hero);
+      await message.reply({ embeds: [buildRelationOverviewEmbed(data)] });
+      return;
+    }
+    if (command.kind === "suffix") {
+      const suffixPair = resolveRelationHeroPair(command.query);
+      if (suffixPair) {
+        const data = getPairRelations(suffixPair[0].hero, suffixPair[1].hero);
+        await message.reply({ embeds: [buildPairRelationEmbed(data)] });
+        return;
+      }
+    }
+    const data = getHeroRelations(heroQuery);
     if (!data) {
-      await message.reply("영웅을 찾지 못했습니다. 예: `/관계 아나`");
+      await message.reply("영웅을 찾지 못했습니다. 예: `아나 상성`");
       return;
     }
     await message.reply({ embeds: [buildRelationOverviewEmbed(data)] });

@@ -9,9 +9,11 @@
 ## 파일 구조
 
 - `src/data/relations/relations.json`: 검수 관계와 후보 상태
+- `src/data/relations/roster-relations.json`: 전체 영웅 커버리지 관계
 - `src/data/relations/relation-sources.json`: 출처 URL, 확인일, 데이터 버전
 - `src/relations.js`: 스키마 검증과 결정론적 조회
 - `scripts/validate-relations.js`: CI·로컬 검증 명령
+- `scripts/build-roster-relations.js`: 전체 영웅 관계 JSON 생성
 - `scripts/sync-overpicker-relations.js`: 외부 후보 동기화
 - `work/relation-sync/`: 원본 스냅샷과 정규화 후보를 저장하는 Git 제외 작업 폴더
 
@@ -64,3 +66,12 @@ x-relations-admin-token: <RELATIONS_ADMIN_TOKEN>
 5. 데이터 버전과 `last_reviewed_at`을 올린다.
 
 현재 단계에서는 패치 영향을 자동 추론하거나 LLM으로 관계를 생성하지 않는다.
+
+## Discord 명령
+
+```text
+아나 상성
+아나 로드호그 상성
+```
+
+영웅명 뒤에 `상성`을 붙이는 형식이 기본이다. 기존 `/관계 아나`와 `/상성 아나 로드호그`도 이전 사용자와의 호환을 위해 유지한다. 관계 데이터 검증기는 `src/heroes.js`에 등록된 모든 영웅이 최소 하나 이상의 `verified` 관계에 포함되는지 검사한다.

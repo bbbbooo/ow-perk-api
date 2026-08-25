@@ -1,7 +1,14 @@
 {
-  "data_version": "2026-08-25.1",
+  "data_version": "2026-08-25.2",
   "last_reviewed_at": "2026-08-25",
   "sources": [
+    {
+      "id": "blizzard_heroes",
+      "name": "Overwatch 공식 영웅 및 기술 페이지",
+      "url": "https://overwatch.blizzard.com/ko-kr/heroes/",
+      "kind": "official_hero_catalog",
+      "checked_at": "2026-08-25"
+    },
     {
       "id": "blizzard_ana",
       "name": "Overwatch 공식 영웅 페이지 — Ana",

@@ -990,6 +990,40 @@
       "valid_until_patch": null
     },
     {
+      "id": "winston__wrecking_ball__competition",
+      "source_hero": "winston",
+      "target_hero": "wrecking_ball",
+      "type": "competition",
+      "strength": 0.75,
+      "confidence": 0.7,
+      "reasons": [
+        {
+          "kind": "role_slot",
+          "source_ability": "jump_pack_and_barrier_projector",
+          "target_trait": "roll_and_grappling_claw",
+          "summary_ko": "둘 다 기동기로 적진에 들어가 후방을 흔드는 다이브 탱커라서, 한 탱커 슬롯에서 비슷한 역할을 맡습니다."
+        }
+      ],
+      "contexts": {
+        "modes": [
+          "competitive_5v5"
+        ],
+        "ranks": [],
+        "maps": []
+      },
+      "caveats_ko": "맵 구조, 양 팀 조합, 기술 재사용 대기시간과 숙련도에 따라 실제 영향은 달라질 수 있습니다.",
+      "evidence": [
+        {
+          "source": "blizzard_heroes",
+          "kind": "official_ability_catalog",
+          "checked_at": "2026-08-25"
+        }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
       "id": "tracer__winston__synergy",
       "source_hero": "tracer",
       "target_hero": "winston",

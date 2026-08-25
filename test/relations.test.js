@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import {
   getHeroRelations,
   getPairRelations,
+  resolveDirectRelationHeroPair,
   resolveRelationHeroPair,
   validateRelationData,
 } from "../src/relations.js";
@@ -71,4 +72,11 @@ test("두 영웅 사이의 방향별 관계를 반환한다", () => {
 test("공백이 포함된 영웅 이름 두 개를 구분한다", () => {
   assert.deepEqual(resolveRelationHeroPair("디바 윈스턴").map((hero) => hero.hero), ["dva", "winston"]);
   assert.equal(resolveRelationHeroPair("아나"), null);
+});
+
+test("전용 채널의 두 영웅 입력을 구분하고 공백이 있는 한 영웅은 제외한다", () => {
+  assert.deepEqual(resolveDirectRelationHeroPair("아나 디바").map((hero) => hero.hero), ["ana", "dva"]);
+  assert.deepEqual(resolveDirectRelationHeroPair("볼 윈스").map((hero) => hero.hero), ["wrecking_ball", "winston"]);
+  assert.equal(resolveDirectRelationHeroPair("솔저 76"), null);
+  assert.equal(resolveDirectRelationHeroPair("레킹 볼"), null);
 });

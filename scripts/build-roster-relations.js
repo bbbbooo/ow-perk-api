@@ -33,6 +33,7 @@ const specs = [
   ["mercy", "sojourn", "synergy", 0.6, "공격력 증폭이 소전의 기관포와 충전된 레일건의 집중 피해를 강화합니다.", "damage_boost", "railgun"],
   ["ana", "soldier_76", "synergy", 0.6, "나노 강화제가 전술 조준경 동안 솔저: 76의 공격력을 높이고 받는 피해를 줄입니다.", "nano_boost", "tactical_visor"],
   ["sombra", "wrecking_ball", "counter", 0.75, "해킹으로 구르기와 갈고리 기동을 제한하면 레킹볼이 진입 후 빠져나가기 어려워집니다.", "hack", "roll_and_grappling_claw"],
+  ["winston", "wrecking_ball", "competition", 0.75, "둘 다 기동기로 적진에 들어가 후방을 흔드는 다이브 탱커라서, 한 탱커 슬롯에서 비슷한 역할을 맡습니다.", "jump_pack_and_barrier_projector", "roll_and_grappling_claw"],
   ["tracer", "winston", "synergy", 0.7, "윈스턴의 점프 팩 진입에 트레이서가 점멸로 합류해 같은 후방 표적에 압박을 집중할 수 있습니다.", "jump_pack", "blink"],
   ["winston", "torbjorn", "counter", 0.55, "윈스턴의 전기 원뿔 공격은 포탑 주변의 여러 대상을 동시에 압박하며 방벽으로 포탑 사선을 나눌 수 있습니다.", "tesla_cannon_and_barrier_projector", "deploy_turret"],
   ["lucio", "vendetta", "synergy", 0.65, "속도 증폭이 근접 공격 중심인 벤데타가 거리를 좁혀 검 공격을 시작하도록 돕습니다.", "crossfade_speed", "palatine_fang"],

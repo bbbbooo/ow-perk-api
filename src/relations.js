@@ -139,6 +139,11 @@ export function resolveRelationHeroPair(input) {
   return unique.size === 1 ? [...unique.values()][0] : null;
 }
 
+export function resolveDirectRelationHeroPair(input) {
+  if (resolveRelationHero(input)) return null;
+  return resolveRelationHeroPair(input);
+}
+
 export function getHeroRelations(heroInput, { type = null, includeCandidates = false } = {}) {
   const hero = resolveRelationHero(heroInput);
   if (!hero) return null;

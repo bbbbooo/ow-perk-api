@@ -5,7 +5,13 @@ import { parseDirectPerkCommand, parsePerkCommand } from "./message-command.js";
 import { getHeroMetadata, getHeroPerks, getHeroes } from "./overlooker.js";
 import { parseRelationCommand } from "./relation-command.js";
 import { buildPairRelationEmbed, buildRelationOverviewEmbed } from "./relation-formatter.js";
-import { getHeroRelations, getPairRelations, resolveRelationHero, resolveRelationHeroPair } from "./relations.js";
+import {
+  getHeroRelations,
+  getPairRelations,
+  resolveDirectRelationHeroPair,
+  resolveRelationHero,
+  resolveRelationHeroPair,
+} from "./relations.js";
 
 const DIRECT_COMMAND_COOLDOWN_MS = 3_000;
 
@@ -93,8 +99,19 @@ export async function startBot(token) {
       }
       return;
     }
-    const prefixedCommand = parsePerkCommand(message.content);
     const isPerkChannel = perkChannelIds.has(message.channelId);
+    const directPair = isPerkChannel ? resolveDirectRelationHeroPair(message.content) : null;
+    if (directPair) {
+      try {
+        const data = getPairRelations(directPair[0].hero, directPair[1].hero);
+        await message.reply({ embeds: [buildPairRelationEmbed(data)] });
+      } catch (error) {
+        console.error("[discord] direct relation command error:", error);
+        await message.reply("두 영웅의 상성을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.").catch(() => {});
+      }
+      return;
+    }
+    const prefixedCommand = parsePerkCommand(message.content);
     const command = prefixedCommand ?? (isPerkChannel ? parseDirectPerkCommand(message.content) : null);
     if (!command) return;
 

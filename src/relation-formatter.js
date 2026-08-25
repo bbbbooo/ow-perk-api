@@ -1,12 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 import { koreanName } from "./heroes.js";
 
-const TYPE_LABELS = {
-  counter: "카운터",
-  synergy: "시너지",
-  competition: "경쟁 픽",
-};
-
 export function strengthLabel(value) {
   if (value >= 0.75) return "강함";
   if (value >= 0.5) return "보통";
@@ -27,19 +21,35 @@ function otherHero(relation, hero) {
   return relation.source_hero === hero ? relation.target_hero : relation.source_hero;
 }
 
-function relationLine(relation, hero) {
-  const target = otherHero(relation, hero);
-  const reason = relation.reasons[0]?.summary_ko ?? "상세 이유 검토 중";
-  return `**${koreanName(target) ?? target}** · 영향 ${strengthLabel(relation.strength)} · 근거 ${confidenceLabel(relation.confidence)}\n↳ ${reason}`;
+function overviewRelationLabel(kind, strength) {
+  if (kind === "counter") {
+    if (strength >= 0.75) return "강한 카운터";
+    if (strength >= 0.5) return "카운터";
+    return "약한 카운터";
+  }
+  if (kind === "synergy") {
+    if (strength >= 0.75) return "궁합 매우 좋음";
+    if (strength >= 0.5) return "궁합 좋음";
+    return "상황에 따라 좋음";
+  }
+  if (strength >= 0.75) return "역할이 매우 비슷함";
+  if (strength >= 0.5) return "역할이 비슷함";
+  return "일부 역할이 겹침";
 }
 
-function relationField(name, relations, hero) {
+function relationLine(relation, hero, kind) {
+  const target = otherHero(relation, hero);
+  const reason = relation.reasons[0]?.summary_ko ?? "상세 이유 검토 중";
+  return `**${koreanName(target) ?? target}** · ${overviewRelationLabel(kind, relation.strength)}\n↳ ${reason}`;
+}
+
+function relationField(name, relations, hero, kind) {
   const value = relations.length
     ? [...relations]
       .sort((left, right) => right.strength - left.strength || right.confidence - left.confidence)
-      .map((relation) => relationLine(relation, hero))
+      .map((relation) => relationLine(relation, hero, kind))
       .join("\n\n")
-    : "검수 완료된 관계가 아직 없습니다.";
+    : "아직 확인된 상성 정보가 없어요.";
   return { name, value: truncate(value) };
 }
 
@@ -47,12 +57,12 @@ export function buildRelationOverviewEmbed(data) {
   return new EmbedBuilder()
     .setColor(0x4f8cff)
     .setTitle(`${data.hero_name} 상성 요약`)
-    .setDescription("카운터 정보를 먼저 표시합니다. 상성 강도는 승률이나 승리 확률을 뜻하지 않습니다.")
+    .setDescription("카운터부터 확인해 보세요. 맵과 조합에 따라 실제 상성은 달라질 수 있어요.")
     .addFields(
-      relationField(`🚨 ${data.hero_name}의 카운터 · 상대하기 어려움`, data.countered_by, data.hero),
-      relationField(`✅ ${data.hero_name}가 카운터하는 영웅 · 상대하기 좋음`, data.counters, data.hero),
-      relationField(`🤝 ${data.hero_name}와 시너지가 좋은 영웅`, data.synergies, data.hero),
-      relationField("🔄 같은 역할의 대체·경쟁 영웅", data.competitions, data.hero),
+      relationField(`🚨 ${data.hero_name}의 카운터`, data.countered_by, data.hero, "counter"),
+      relationField(`🎯 ${data.hero_name}가 카운터하는 영웅`, data.counters, data.hero, "counter"),
+      relationField(`🤝 ${data.hero_name}와 잘 맞는 영웅`, data.synergies, data.hero, "synergy"),
+      relationField("🔄 같은 역할의 대체·경쟁 영웅", data.competitions, data.hero, "competition"),
     )
     .setFooter({ text: `관계 데이터 ${data.data_version} · 최종 검수 ${data.last_reviewed_at}` });
 }
@@ -60,30 +70,47 @@ export function buildRelationOverviewEmbed(data) {
 function pairRelationField(relation) {
   const source = koreanName(relation.source_hero) ?? relation.source_hero;
   const target = koreanName(relation.target_hero) ?? relation.target_hero;
-  const direction = relation.type === "counter" ? `${source} → ${target}` : `${source} ↔ ${target}`;
+  if (relation.type === "counter") {
+    const advantage = [
+      `**${source} 우세 · ${overviewRelationLabel("counter", relation.strength)}**`,
+      ...relation.reasons.map((reason) => `↳ ${reason.summary_ko}`),
+    ].join("\n");
+    const fields = [{ name: `⚔️ ${source} ➜ ${target}`, value: truncate(advantage) }];
+    if (relation.caveats_ko) {
+      fields.push({
+        name: `🛡️ ${target} ➜ ${source} 대응 방법`,
+        value: truncate(`↳ ${relation.caveats_ko}`),
+      });
+    }
+    return fields;
+  }
+
+  const name = relation.type === "synergy"
+    ? `🤝 ${source} ↔ ${target}`
+    : `🔄 ${source} ↔ ${target} 역할 비교`;
   const details = [
-    `**영향:** ${strengthLabel(relation.strength)} · **근거 신뢰도:** ${confidenceLabel(relation.confidence)}`,
-    ...relation.reasons.map((reason) => `• ${reason.summary_ko}`),
-    relation.caveats_ko ? `⚠️ ${relation.caveats_ko}` : null,
+    `**${overviewRelationLabel(relation.type, relation.strength)}**`,
+    ...relation.reasons.map((reason) => `↳ ${reason.summary_ko}`),
+    relation.caveats_ko ? `※ ${relation.caveats_ko}` : null,
   ].filter(Boolean).join("\n");
-  return { name: `${TYPE_LABELS[relation.type]} · ${direction}`, value: truncate(details) };
+  return [{ name, value: truncate(details) }];
 }
 
 export function buildPairRelationEmbed(data) {
   const embed = new EmbedBuilder()
     .setColor(0x9b6cff)
-    .setTitle(`${data.source.hero_name} ↔ ${data.target.hero_name} 상성`)
-    .setDescription("기술 상호작용과 조건을 정리한 자료이며 통계적 승률이나 정답을 뜻하지 않습니다.")
+    .setTitle(`${data.source.hero_name} vs ${data.target.hero_name} 상성`)
+    .setDescription("누가 누구를 카운터하는지와 그 이유를 정리했어요. 맵과 조합에 따라 달라질 수 있습니다.")
     .setFooter({ text: `관계 데이터 ${data.data_version} · 최종 검수 ${data.last_reviewed_at}` });
 
   if (data.relations.length) {
-    embed.addFields(data.relations.map(pairRelationField));
+    embed.addFields(data.relations.flatMap(pairRelationField));
     const sources = data.sources
       .map((source) => `[${source.name}](${source.url}) · ${source.checked_at}`)
       .join("\n");
     if (sources) embed.addFields({ name: "출처 및 확인일", value: truncate(sources) });
   } else {
-    embed.addFields({ name: "검수 결과", value: "두 영웅 사이에 공개된 검수 완료 관계가 아직 없습니다." });
+    embed.addFields({ name: "상성 정보", value: "두 영웅 사이에서 확인된 직접적인 카운터나 궁합 정보가 아직 없어요." });
   }
   return embed;
 }

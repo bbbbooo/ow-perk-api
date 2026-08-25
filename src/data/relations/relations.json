@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "data_version": "2026-08-25.2",
+  "last_reviewed_at": "2026-08-25",
+  "relations": [
+    {
+      "id": "ana__roadhog__counter",
+      "source_hero": "ana",
+      "target_hero": "roadhog",
+      "type": "counter",
+      "strength": 0.9,
+      "confidence": 0.95,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "biotic_grenade",
+          "target_trait": "take_a_breather",
+          "summary_ko": "생체 수류탄의 치유 차단이 로드호그의 숨 돌리기 회복을 직접 제한합니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": [] },
+      "caveats_ko": "수류탄 재사용 대기시간, 방벽과 엄폐, 정화 효과에 따라 영향이 크게 달라집니다.",
+      "evidence": [
+        { "source": "blizzard_ana", "kind": "official_ability_description", "checked_at": "2026-08-25" },
+        { "source": "blizzard_roadhog", "kind": "official_ability_description", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "kiriko__ana__counter",
+      "source_hero": "kiriko",
+      "target_hero": "ana",
+      "type": "counter",
+      "strength": 0.8,
+      "confidence": 0.95,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "protection_suzu",
+          "target_trait": "sleep_and_anti_heal",
+          "summary_ko": "정화의 방울이 수면과 치유 차단을 포함한 아나의 주요 해로운 효과를 정화할 수 있습니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": [] },
+      "caveats_ko": "정화의 방울이 빠졌거나 투사체 도착 타이밍을 놓치면 이 이점은 사라집니다.",
+      "evidence": [
+        { "source": "blizzard_kiriko", "kind": "official_ability_description", "checked_at": "2026-08-25" },
+        { "source": "blizzard_ana", "kind": "official_ability_description", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "dva__ana__counter",
+      "source_hero": "dva",
+      "target_hero": "ana",
+      "type": "counter",
+      "strength": 0.65,
+      "confidence": 0.9,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "defense_matrix",
+          "target_trait": "projectile_abilities",
+          "summary_ko": "방어 매트릭스가 전방의 투사체를 막아 아나의 소총 탄환과 수면총·생체 수류탄 사용을 제한합니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": [] },
+      "caveats_ko": "매트릭스 범위 밖 공격과 지형을 이용한 수류탄 폭발에는 취약하며 자원 관리가 필요합니다.",
+      "evidence": [
+        { "source": "blizzard_dva", "kind": "official_ability_description", "checked_at": "2026-08-25" },
+        { "source": "blizzard_ana", "kind": "official_ability_description", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "winston__ana__counter",
+      "source_hero": "winston",
+      "target_hero": "ana",
+      "type": "counter",
+      "strength": 0.6,
+      "confidence": 0.8,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "jump_pack_and_barrier_projector",
+          "target_trait": "long_range_support",
+          "summary_ko": "점프 팩으로 장거리 지원가인 아나에게 접근하고 방벽 돔으로 아나와 아군 사이의 지원 각도를 나눌 수 있습니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": ["vertical_or_dive_favored"] },
+      "caveats_ko": "윈스턴이 수면총이나 생체 수류탄에 맞으면 역으로 고립될 수 있어 일방적인 상성은 아닙니다.",
+      "evidence": [
+        { "source": "blizzard_winston", "kind": "official_ability_description", "checked_at": "2026-08-25" },
+        { "source": "blizzard_ana", "kind": "official_hero_page", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ana__winston__synergy",
+      "source_hero": "ana",
+      "target_hero": "winston",
+      "type": "synergy",
+      "strength": 0.8,
+      "confidence": 0.9,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "biotic_rifle_and_nano_boost",
+          "target_trait": "jump_pack_engage",
+          "summary_ko": "아나는 멀리 진입한 윈스턴을 장거리에서 회복시키고 나노 강화제로 공격력과 생존력을 함께 높일 수 있습니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": ["open_sightlines"] },
+      "caveats_ko": "방벽과 지형에 치유 시야가 끊기면 시너지가 약해집니다.",
+      "evidence": [
+        { "source": "blizzard_ana", "kind": "official_ability_description", "checked_at": "2026-08-25" },
+        { "source": "blizzard_winston", "kind": "official_ability_description", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "ana__roadhog__synergy",
+      "source_hero": "ana",
+      "target_hero": "roadhog",
+      "type": "synergy",
+      "strength": 0.7,
+      "confidence": 0.9,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "biotic_grenade",
+          "target_trait": "take_a_breather",
+          "summary_ko": "아군에게 적용된 생체 수류탄의 치유 증가가 로드호그의 숨 돌리기와 아나의 집중 치유 효율을 높입니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": [] },
+      "caveats_ko": "치유 차단이나 강제 이동을 당하면 회복 연계가 끊길 수 있습니다.",
+      "evidence": [
+        { "source": "blizzard_ana", "kind": "official_ability_description", "checked_at": "2026-08-25" },
+        { "source": "blizzard_roadhog", "kind": "official_ability_description", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "kiriko__roadhog__synergy",
+      "source_hero": "kiriko",
+      "target_hero": "roadhog",
+      "type": "synergy",
+      "strength": 0.85,
+      "confidence": 0.95,
+      "reasons": [
+        {
+          "kind": "mechanic",
+          "source_ability": "protection_suzu",
+          "target_trait": "take_a_breather",
+          "summary_ko": "정화의 방울이 치유 차단 등 해로운 효과를 제거해 로드호그가 숨 돌리기로 다시 버틸 수 있는 창을 만듭니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": [] },
+      "caveats_ko": "정화의 방울과 숨 돌리기를 동시에 낭비하지 않도록 재사용 대기시간 조율이 필요합니다.",
+      "evidence": [
+        { "source": "blizzard_kiriko_design", "kind": "official_mechanic_article", "checked_at": "2026-08-25" },
+        { "source": "blizzard_roadhog_rework", "kind": "official_patch_notes", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "kiriko__winston__synergy",
+      "source_hero": "kiriko",
+      "target_hero": "winston",
+      "type": "synergy",
+      "strength": 0.75,
+      "confidence": 0.9,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "swift_step_and_protection_suzu",
+          "target_trait": "jump_pack_engage",
+          "summary_ko": "순보로 점프 팩 진입을 따라갈 수 있고 정화의 방울로 진입 직후의 집중 공격과 해로운 효과를 완화합니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": ["vertical_or_dive_favored"] },
+      "caveats_ko": "윈스턴에게 순보를 사용하면 키리코의 퇴로가 줄어들므로 진입 타이밍 합의가 필요합니다.",
+      "evidence": [
+        { "source": "blizzard_kiriko_design", "kind": "official_mechanic_article", "checked_at": "2026-08-25" },
+        { "source": "blizzard_winston", "kind": "official_ability_description", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "dva__kiriko__synergy",
+      "source_hero": "dva",
+      "target_hero": "kiriko",
+      "type": "synergy",
+      "strength": 0.7,
+      "confidence": 0.85,
+      "reasons": [
+        {
+          "kind": "playstyle",
+          "source_ability": "boosters",
+          "target_trait": "swift_step",
+          "summary_ko": "D.Va의 부스터 진입을 키리코가 순보로 따라가며 정화와 회복을 제공할 수 있습니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": ["vertical_or_dive_favored"] },
+      "caveats_ko": "D.Va가 부스터로 빠져나간 뒤 키리코만 남지 않도록 이탈 계획이 필요합니다.",
+      "evidence": [
+        { "source": "blizzard_dva", "kind": "official_ability_description", "checked_at": "2026-08-25" },
+        { "source": "blizzard_kiriko_design", "kind": "official_mechanic_article", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    },
+    {
+      "id": "dva__winston__competition",
+      "source_hero": "dva",
+      "target_hero": "winston",
+      "type": "competition",
+      "strength": 0.8,
+      "confidence": 0.95,
+      "reasons": [
+        {
+          "kind": "role_slot",
+          "source_ability": "boosters",
+          "target_trait": "jump_pack",
+          "summary_ko": "둘 다 기동기로 고지대와 후방에 진입하는 이니시에이터형 탱커로, 역할 고정 5대5에서는 한 탱커 슬롯을 두고 경쟁합니다."
+        }
+      ],
+      "contexts": { "modes": ["competitive_5v5"], "ranks": [], "maps": ["vertical_or_dive_favored"] },
+      "caveats_ko": "자유 역할이나 다중 탱커 모드에서는 경쟁 관계가 아니라 조합 관계로 바뀔 수 있습니다.",
+      "evidence": [
+        { "source": "blizzard_dva", "kind": "official_role_and_ability", "checked_at": "2026-08-25" },
+        { "source": "blizzard_winston", "kind": "official_role_and_ability", "checked_at": "2026-08-25" }
+      ],
+      "status": "verified",
+      "valid_from_patch": null,
+      "valid_until_patch": null
+    }
+  ]
+}

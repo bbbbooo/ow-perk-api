@@ -24,9 +24,11 @@ test("한국 커뮤니티 별명과 축약형을 해석한다", () => {
   assert.equal(resolveHero("볼", heroes)?.hero, "wrecking_ball");
   assert.equal(resolveHero("해먼드", heroes)?.hero, "wrecking_ball");
   assert.equal(resolveHero("원숭이", heroes)?.hero, "winston");
+  assert.equal(resolveHero("윈스", heroes)?.hero, "winston");
   assert.equal(resolveHero("위도", heroes)?.hero, "widowmaker");
   assert.equal(resolveHero("야타", heroes)?.hero, "zenyatta");
   assert.equal(resolveHero("김병장", heroes)?.hero, "soldier_76");
+  assert.equal(resolveKnownHero("일라")?.hero, "illari");
 });
 
 test("알려진 영웅은 API 목록 없이 바로 해석한다", () => {

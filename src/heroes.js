@@ -5,7 +5,7 @@ const aliases = {
   dmon: ["디몬", "d.mon", "d mon"], dva: ["디바", "송하나", "d.va", "d va"],
   domina: ["도미나", "도미"], doomfist: ["둠피스트", "둠피", "둠"], echo: ["에코"],
   emre: ["엠레"], freja: ["프레야", "프레"], genji: ["겐지", "겐"], hanzo: ["한조"],
-  hazard: ["해저드", "해저"], illari: ["일리아리", "일라리", "일리"],
+  hazard: ["해저드", "해저"], illari: ["일리아리", "일라리", "일라", "일리"],
   jetpack_cat: ["제트팩 캣", "제트팩캣", "제트팩", "제트캣", "젯캣", "고양이", "냥이"],
   junker_queen: ["정커퀸", "정커 퀸", "정커", "정퀸", "퀸"],
   junkrat: ["정크랫", "정크"], juno: ["주노"], kiriko: ["키리코", "키리"],
@@ -21,10 +21,12 @@ const aliases = {
   torbjorn: ["토르비욘", "토르비온", "토르", "토비"], tracer: ["트레이서", "트레"],
   vendetta: ["벤데타", "벤데"], venture: ["벤처"],
   widowmaker: ["위도우메이커", "위도우", "위도", "위메"],
-  winston: ["윈스턴", "원숭이", "고릴라", "윈붕이"],
+  winston: ["윈스턴", "윈스", "원숭이", "고릴라", "윈붕이"],
   wrecking_ball: ["레킹볼", "레킹 볼", "레킹", "볼", "햄찌", "햄스터", "해먼드"],
   wuyang: ["우양"], zarya: ["자리야", "자랴"], zenyatta: ["젠야타", "젠", "야타"],
 };
+
+export const knownHeroSlugs = Object.freeze(Object.keys(aliases));
 
 export function normalize(value) {
   return String(value ?? "")

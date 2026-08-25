@@ -9,6 +9,9 @@
     "clear-commands": "node src/clear-commands.js",
     "sync:perks-ko": "node scripts/sync-ko-perks.js",
     "sync:perk-snapshots": "node scripts/sync-perk-snapshots.js",
+    "sync:relations:candidates": "node scripts/sync-overpicker-relations.js",
+    "build:relations:roster": "node scripts/build-roster-relations.js",
+    "validate:relations": "node scripts/validate-relations.js",
     "test": "node --test"
   },
   "engines": {

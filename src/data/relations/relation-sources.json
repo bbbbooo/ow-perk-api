@@ -1,0 +1,70 @@
+{
+  "data_version": "2026-08-25.2",
+  "last_reviewed_at": "2026-08-25",
+  "sources": [
+    {
+      "id": "blizzard_heroes",
+      "name": "Overwatch 공식 영웅 및 기술 페이지",
+      "url": "https://overwatch.blizzard.com/ko-kr/heroes/",
+      "kind": "official_hero_catalog",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "blizzard_ana",
+      "name": "Overwatch 공식 영웅 페이지 — Ana",
+      "url": "https://overwatch.blizzard.com/en-us/heroes/ana/",
+      "kind": "official_hero_page",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "blizzard_kiriko",
+      "name": "Overwatch 공식 영웅 페이지 — Kiriko",
+      "url": "https://overwatch.blizzard.com/en-us/heroes/kiriko/",
+      "kind": "official_hero_page",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "blizzard_kiriko_design",
+      "name": "Blizzard — Kiriko concept and playstyle",
+      "url": "https://overwatch.blizzard.com/en-us/news/23841483/let-the-kitsune-guide-you-a-first-look-at-kiriko-s-concept-and-playstyle/",
+      "kind": "official_mechanic_article",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "blizzard_roadhog",
+      "name": "Overwatch 공식 영웅 페이지 — Roadhog",
+      "url": "https://overwatch.blizzard.com/en-us/heroes/roadhog/",
+      "kind": "official_hero_page",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "blizzard_roadhog_rework",
+      "name": "Blizzard — Roadhog 2023 rework notes",
+      "url": "https://overwatch.blizzard.com/en-us/news/patch-notes/live/2023/11/",
+      "kind": "official_patch_notes",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "blizzard_winston",
+      "name": "Overwatch 공식 영웅 페이지 — Winston",
+      "url": "https://overwatch.blizzard.com/en-us/heroes/winston/",
+      "kind": "official_hero_page",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "blizzard_dva",
+      "name": "Overwatch 공식 영웅 페이지 — D.Va",
+      "url": "https://overwatch.blizzard.com/en-us/heroes/dva/",
+      "kind": "official_hero_page",
+      "checked_at": "2026-08-25"
+    },
+    {
+      "id": "overpicker_candidate_api",
+      "name": "OverPicker 관계 후보 API",
+      "url": "https://api.overpicker.com/",
+      "kind": "candidate_matrix",
+      "checked_at": "2026-08-25",
+      "usage_note_ko": "후보 검토용이며 검수 관계를 자동으로 덮어쓰지 않습니다. 원본 재배포 조건 확인 전에는 로컬 작업 파일로만 저장합니다."
+    }
+  ]
+}

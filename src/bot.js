@@ -3,6 +3,9 @@ import { buildPerkEmbed } from "./formatter.js";
 import { resolveHero, resolveKnownHero } from "./heroes.js";
 import { parseDirectPerkCommand, parsePerkCommand } from "./message-command.js";
 import { getHeroMetadata, getHeroPerks, getHeroes } from "./overlooker.js";
+import { parseRelationCommand } from "./relation-command.js";
+import { buildPairRelationEmbed, buildRelationOverviewEmbed } from "./relation-formatter.js";
+import { getHeroRelations, getPairRelations, resolveRelationHeroPair } from "./relations.js";
 
 const DIRECT_COMMAND_COOLDOWN_MS = 3_000;
 
@@ -33,6 +36,30 @@ async function handlePerkCommand(message, { heroQuery, mode }) {
   await message.reply({ embeds: [buildPerkEmbed(data, mode, metadata)] });
 }
 
+async function handleRelationCommand(message, command) {
+  if (command.error) {
+    await message.reply(command.error);
+    return;
+  }
+  if (command.kind === "overview") {
+    const data = getHeroRelations(command.heroQuery);
+    if (!data) {
+      await message.reply("영웅을 찾지 못했습니다. 예: `/관계 아나`");
+      return;
+    }
+    await message.reply({ embeds: [buildRelationOverviewEmbed(data)] });
+    return;
+  }
+
+  const pair = resolveRelationHeroPair(command.pairQuery);
+  if (!pair) {
+    await message.reply("두 영웅을 구분할 수 없습니다. 예: `/상성 아나 로드호그`");
+    return;
+  }
+  const data = getPairRelations(pair[0].hero, pair[1].hero);
+  await message.reply({ embeds: [buildPairRelationEmbed(data)] });
+}
+
 export async function startBot(token) {
   const perkChannelIds = getPerkChannelIds();
   const directCommandCooldowns = new Map();
@@ -41,6 +68,16 @@ export async function startBot(token) {
   });
   client.on(Events.MessageCreate, async (message) => {
     if (message.author.bot) return;
+    const relationCommand = parseRelationCommand(message.content);
+    if (relationCommand) {
+      try {
+        await handleRelationCommand(message, relationCommand);
+      } catch (error) {
+        console.error("[discord] relation command error:", error);
+        await message.reply("영웅 관계를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.").catch(() => {});
+      }
+      return;
+    }
     const prefixedCommand = parsePerkCommand(message.content);
     const isPerkChannel = perkChannelIds.has(message.channelId);
     const command = prefixedCommand ?? (isPerkChannel ? parseDirectPerkCommand(message.content) : null);

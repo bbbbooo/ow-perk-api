@@ -26,6 +26,8 @@ const aliases = {
   wuyang: ["우양"], zarya: ["자리야", "자랴"], zenyatta: ["젠야타", "젠", "야타"],
 };
 
+export const knownHeroSlugs = Object.freeze(Object.keys(aliases));
+
 export function normalize(value) {
   return String(value ?? "")
     .normalize("NFKD")

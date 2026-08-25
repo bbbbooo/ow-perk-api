@@ -35,7 +35,10 @@ function relationLine(relation, hero) {
 
 function relationField(name, relations, hero) {
   const value = relations.length
-    ? relations.map((relation) => relationLine(relation, hero)).join("\n\n")
+    ? [...relations]
+      .sort((left, right) => right.strength - left.strength || right.confidence - left.confidence)
+      .map((relation) => relationLine(relation, hero))
+      .join("\n\n")
     : "검수 완료된 관계가 아직 없습니다.";
   return { name, value: truncate(value) };
 }
@@ -43,13 +46,13 @@ function relationField(name, relations, hero) {
 export function buildRelationOverviewEmbed(data) {
   return new EmbedBuilder()
     .setColor(0x4f8cff)
-    .setTitle(`${data.hero_name} 영웅 관계`)
-    .setDescription(`영향 강도와 근거 신뢰도는 별개이며, 어느 쪽도 승률이나 승리 확률을 뜻하지 않습니다.`)
+    .setTitle(`${data.hero_name} 상성 요약`)
+    .setDescription("카운터 정보를 먼저 표시합니다. 상성 강도는 승률이나 승리 확률을 뜻하지 않습니다.")
     .addFields(
-      relationField("유리한 상호작용", data.counters, data.hero),
-      relationField("주의할 상대", data.countered_by, data.hero),
-      relationField("시너지", data.synergies, data.hero),
-      relationField("경쟁 픽", data.competitions, data.hero),
+      relationField(`🚨 ${data.hero_name}의 카운터 · 상대하기 어려움`, data.countered_by, data.hero),
+      relationField(`✅ ${data.hero_name}가 카운터하는 영웅 · 상대하기 좋음`, data.counters, data.hero),
+      relationField(`🤝 ${data.hero_name}와 시너지가 좋은 영웅`, data.synergies, data.hero),
+      relationField("🔄 같은 역할의 대체·경쟁 영웅", data.competitions, data.hero),
     )
     .setFooter({ text: `관계 데이터 ${data.data_version} · 최종 검수 ${data.last_reviewed_at}` });
 }
